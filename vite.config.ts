@@ -6,4 +6,12 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+// Base path: "/" locally and in Lovable preview, "/<repo-name>/" on GitHub Pages.
+// The deploy workflow sets GITHUB_PAGES_BASE at build time.
+const base = process.env.GITHUB_PAGES_BASE || "/";
+
+export default defineConfig({
+  vite: {
+    base,
+  },
+});
