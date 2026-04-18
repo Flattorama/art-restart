@@ -135,9 +135,9 @@ const Container = ({
 }: {
   children: ReactNode;
   style?: CSSProperties;
-  as?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
 }) => {
-  const Comp = Tag as React.ElementType;
+  const Comp = Tag;
   return (
     <Comp
       style={{
