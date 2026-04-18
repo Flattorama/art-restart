@@ -441,6 +441,7 @@ const PathCard = ({
 }) => (
   <a
     href={href}
+    className="path-card"
     style={{
       display: "block",
       padding: "clamp(1.75rem, 3vw, 2.5rem)",
@@ -475,7 +476,6 @@ const PathCard = ({
 );
 
 const Hero = () => {
-  useReveal();
   return (
     <section
       id="top"
@@ -484,9 +484,77 @@ const Hero = () => {
         background: palette.paper,
         position: "relative",
         overflow: "hidden",
+        minHeight: "min(92vh, 880px)",
       }}
     >
-      <Container>
+      {/* Video layer */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          overflow: "hidden",
+          background: `linear-gradient(160deg, ${palette.paperDeep} 0%, ${palette.paper} 50%, ${palette.paperDark} 100%)`,
+        }}
+      >
+        <div
+          data-hero-poster-mobile
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: `radial-gradient(ellipse at 30% 20%, ${palette.paper} 0%, ${palette.paperDeep} 55%, ${palette.paperDark} 100%)`,
+          }}
+        />
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transformOrigin: "center center",
+          }}
+        >
+          <source src="/video/artrestartvideo1.mp4" type="video/mp4" />
+        </video>
+        {/* Warm paper gradient overlay for legibility */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: `linear-gradient(180deg, rgba(242,233,228,0.82) 0%, rgba(242,233,228,0.55) 35%, rgba(242,233,228,0.72) 70%, rgba(242,233,228,0.95) 100%)`,
+          }}
+        />
+        {/* Terracotta/amber wash */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: `linear-gradient(135deg, rgba(217,108,74,0.18) 0%, rgba(232,165,71,0.10) 50%, rgba(42,75,92,0.12) 100%)`,
+            mixBlendMode: "multiply",
+          }}
+        />
+        {/* Film grain */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.18,
+            mixBlendMode: "multiply",
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.7 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          }}
+        />
+      </div>
+
+      {/* Content layer */}
+      <Container style={{ position: "relative", zIndex: 1 }}>
         <div
           style={{
             display: "flex",
@@ -502,8 +570,13 @@ const Hero = () => {
         </div>
 
         <div style={{ position: "relative" }}>
+          <Starburst
+            size={72}
+            color={palette.mustard}
+            style={{ position: "absolute", right: "8%", top: "-2.5rem" }}
+          />
           <h1
-            className="reveal"
+            className="hero-in hero-in-1"
             style={{
               fontSize: size.hero,
               fontWeight: 500,
@@ -511,7 +584,8 @@ const Hero = () => {
               lineHeight: 0.94,
               color: palette.ink,
               maxWidth: "18ch",
-              fontVariationSettings: '"SOFT" 80',
+              fontVariationSettings: '"SOFT" 100',
+              textShadow: "0 1px 0 rgba(242,233,228,0.8)",
             }}
           >
             A studio for{" "}
@@ -527,26 +601,32 @@ const Hero = () => {
             again —{" "}
             <span style={{ position: "relative", whiteSpace: "nowrap" }}>
               through art.
-              <Starburst
-                size={48}
-                color={palette.mustard}
-                style={{ position: "absolute", right: "-2.5rem", top: "-1rem" }}
+              <ArrowMark
+                size={64}
+                color={palette.terracotta}
+                style={{
+                  position: "absolute",
+                  right: "-3.5rem",
+                  top: "0.4rem",
+                  transform: "rotate(28deg)",
+                }}
               />
             </span>
           </h1>
 
           <p
-            className="reveal"
+            className="hero-in hero-in-2"
             style={{
               marginTop: "clamp(1.5rem, 3vw, 2.5rem)",
               fontSize: size.h4,
               lineHeight: 1.4,
               color: palette.inkMuted,
-              maxWidth: "34ch",
+              maxWidth: "44ch",
+              textShadow: "0 1px 0 rgba(242,233,228,0.6)",
             }}
           >
-            Creative arts therapy and expressive workshops for seniors, adults, teens and kids — and
-            the organizations that care for them.
+            Art therapy, creative workshops, and expressive arts programming — for people who want
+            to feel something, and the organizations that make space for them.
           </p>
         </div>
 
@@ -560,25 +640,55 @@ const Hero = () => {
             maxWidth: "880px",
           }}
         >
-          <PathCard
-            label="Path A"
-            title="For You"
-            body="Individual sessions, group work, and creative wellness for anyone who wants to start again — no art background required."
-            href="#individuals"
-            accent={palette.terracotta}
-          />
-          <PathCard
-            label="Path B"
-            title="For Your Organization"
-            body="Art, drama, music and movement programming for retirement homes, inclusion programs, hospitals and schools."
-            href="#organizations"
-            accent={palette.teal}
-          />
+          <div className="hero-in hero-in-3">
+            <PathCard
+              label="Path A"
+              title="For You"
+              body="Individual sessions, group work, and creative wellness for anyone who wants to start again — no art background required."
+              href="#individuals"
+              accent={palette.terracotta}
+            />
+          </div>
+          <div className="hero-in hero-in-4">
+            <PathCard
+              label="Path B"
+              title="For Your Organization"
+              body="Art, drama, music and movement programming for retirement homes, inclusion programs, hospitals and schools."
+              href="#organizations"
+              accent={palette.teal}
+            />
+          </div>
         </div>
       </Container>
     </section>
   );
 };
+
+// ============================================================================
+// SECTION DIVIDER (hand-drawn squiggle)
+// ============================================================================
+
+const SectionDivider = ({ color = palette.terracotta }: { color?: string }) => (
+  <div
+    aria-hidden="true"
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      padding: "clamp(2rem, 4vw, 3.5rem) 0",
+      background: palette.paper,
+    }}
+  >
+    <svg viewBox="0 0 320 24" width="240" height="18" style={{ overflow: "visible" }}>
+      <path
+        d="M2 12 C 30 2, 50 22, 80 12 S 130 2, 160 12 S 210 22, 240 12 S 290 2, 318 12"
+        fill="none"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  </div>
+);
 
 // ============================================================================
 // MANIFESTO
@@ -609,9 +719,9 @@ const Manifesto = () => (
             fontWeight: 400,
           }}
         >
-          If you can scribble, can&apos;t hold a tune, tripped while dancing or draw stick people —{" "}
+          If you can scribble, can’t hold a tune, tripped while dancing or draw stick people —{" "}
           <span style={{ color: palette.mustard, fontStyle: "normal" }}>
-            you&apos;re exactly who this is for.
+            you’re exactly who this is for.
           </span>
         </p>
       </div>
@@ -665,7 +775,7 @@ const TrustBar = () => {
                 maxWidth: "18ch",
               }}
             >
-              Trusted by Ontario&apos;s leading care communities.
+              Trusted by Ontario’s leading care communities.
             </div>
           </div>
           <div
@@ -766,7 +876,7 @@ const WhatWeDo = () => {
                 maxWidth: "42ch",
               }}
             >
-              Art Restart is a multi-modality creative wellness practice. We don&apos;t pick one
+              Art Restart is a multi-modality creative wellness practice. We don’t pick one
               lane — we follow what works for you, weaving art, music, drama, movement and writing
               into sessions that meet you where you actually are.
             </p>
@@ -864,11 +974,11 @@ const ForIndividuals = () => {
                 lineHeight: 0.98,
               }}
             >
-              You don&apos;t need
+              You don’t need
               <br />
               to be{" "}
               <em style={{ color: palette.mustard, fontVariationSettings: '"SOFT" 100' }}>
-                &ldquo;an artist.&rdquo;
+                “an artist.”
               </em>
             </h2>
             <p
@@ -882,7 +992,7 @@ const ForIndividuals = () => {
               }}
             >
               Art Restart is for everyone. Seniors, adults, teens, kids. If you can scribble,
-              can&apos;t hold a tune, or draw stick people — that&apos;s perfect. This is a safe,
+              can’t hold a tune, or draw stick people — that’s perfect. This is a safe,
               nurturing space, tailored to individuals or small groups.
             </p>
             <p
@@ -898,7 +1008,7 @@ const ForIndividuals = () => {
             >
               Creative expression supports people through anxiety, depression, PTSD, chronic
               illness, grief, stress, and the ordinary weight of being a person right now.
-              It&apos;s also deeply helpful for neurodivergent individuals and survivors of trauma.
+              It’s also deeply helpful for neurodivergent individuals and survivors of trauma.
             </p>
             <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Button
@@ -1045,9 +1155,9 @@ const ForOrganizations = () => {
                 lineHeight: 1.6,
               }}
             >
-              We&apos;ve worked with Reena, Sheena&apos;s Place, UHN, the JCC, The Battle Centre,
+              We’ve worked with Reena, Sheena’s Place, UHN, the JCC, The Battle Centre,
               DANI, and Youth Empowerment. Each engagement is shaped around the community
-              it&apos;s for.
+              it’s for.
             </p>
             <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Button
@@ -1206,7 +1316,8 @@ const StudioNotes = () => {
                   alignItems: "flex-end",
                   justifyContent: "flex-start",
                   padding: "1rem",
-                  background: palette.paperDeep,
+                  background: `radial-gradient(ellipse at 25% 20%, rgba(242,233,228,0.55) 0%, transparent 55%), radial-gradient(ellipse at 80% 85%, rgba(26,22,18,0.45) 0%, transparent 60%), linear-gradient(${135 + (i % 3) * 25}deg, ${palette.paperDeep}, ${palette.paperDark})`,
+                  boxShadow: "inset 0 0 60px rgba(0,0,0,0.15)",
                 }}
               >
                 <img
@@ -1374,9 +1485,9 @@ const About = () => {
               Randi Yaffa is a qualified art therapist, a graduate of the Toronto Art Therapy
               Institute, and a world-class film and television producer. Her work has been
               recognized with a British Academy Award (BAFTA) nomination for the short animated
-              film <em>Plumber</em>, and several Canadian Screen Award nominations. She&apos;s
+              film <em>Plumber</em>, and several Canadian Screen Award nominations. She’s
               produced some of the most talked-about television, shorts, and commercials on air,
-              and has been trusted with some of the industry&apos;s most iconic characters.
+              and has been trusted with some of the industry’s most iconic characters.
             </p>
 
             <p
@@ -1390,10 +1501,10 @@ const About = () => {
               }}
             >
               Two decades of helping artists tell stories on screen taught her something specific:
-              creative expression isn&apos;t decoration. It&apos;s how people figure themselves
+              creative expression isn’t decoration. It’s how people figure themselves
               out. Art Restart is the practice built from that conviction — a place where
               individuals, families, and care organizations can use the full spectrum of expressive
-              arts to process what&apos;s happening in their lives.
+              arts to process what’s happening in their lives.
             </p>
 
             <p
@@ -1406,10 +1517,21 @@ const About = () => {
                 color: palette.inkMuted,
               }}
             >
-              When she isn&apos;t in the studio, Randi is volunteering, working on another graduate
+              When she isn’t in the studio, Randi is volunteering, working on another graduate
               degree, walking her dog Elvis, and trying to raise two kids who are kind and curious
               about the world.
             </p>
+
+            <div
+              className="reveal"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "2rem",
+              }}
+            >
+              <ArrowMark size={48} color={palette.terracotta} />
+            </div>
 
             <div
               className="reveal"
@@ -1523,7 +1645,7 @@ const FAQ = () => {
                 maxWidth: "36ch",
               }}
             >
-              If your question isn&apos;t here, book a free 15-minute chat and ask. There&apos;s no
+              If your question isn’t here, book a free 15-minute chat and ask. There’s no
               wrong starting point.
             </p>
           </div>
@@ -1701,9 +1823,9 @@ const Contact = () => {
                 lineHeight: 0.98,
               }}
             >
-              Let&apos;s see if
+              Let’s see if
               <br />
-              we&apos;re a{" "}
+              we’re a{" "}
               <em style={{ color: palette.mustard, fontVariationSettings: '"SOFT" 100' }}>
                 good fit.
               </em>
@@ -2042,10 +2164,13 @@ function ArtRestartHome() {
       <main>
         <Hero />
         <Manifesto />
+        <SectionDivider color={palette.mustard} />
         <TrustBar />
         <WhatWeDo />
+        <SectionDivider />
         <ForIndividuals />
         <ForOrganizations />
+        <SectionDivider color={palette.teal} />
         <StudioNotes />
         <About />
         <FAQ />
