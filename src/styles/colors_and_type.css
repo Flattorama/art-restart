@@ -3,12 +3,7 @@
    A 1970s American artisan-studio design system
    ========================================================= */
 
-/* ---------- Fonts ---------- */
-/* Fraunces — chunky variable-weight 1970s-revival serif (display voice)
-   DM Sans — clean modern grotesque (body voice)
-   JetBrains Mono — archival/fig label voice
-   Caveat — occasional handwritten accents (sparingly) */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400..700&display=swap');
+/* Fonts loaded via <link> in src/routes/__root.tsx */
 
 :root {
   /* ----- Paper & Ink (base surfaces) ----- */
