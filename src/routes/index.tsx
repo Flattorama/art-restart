@@ -2152,10 +2152,13 @@ function ArtRestartHome() {
       <main>
         <Hero />
         <Manifesto />
+        <SectionDivider color={palette.mustard} />
         <TrustBar />
         <WhatWeDo />
+        <SectionDivider />
         <ForIndividuals />
         <ForOrganizations />
+        <SectionDivider color={palette.teal} />
         <StudioNotes />
         <About />
         <FAQ />
