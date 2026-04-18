@@ -1,50 +1,48 @@
 
 
-## Art Restart R2 Revision Plan
+## Art Restart redesign — to the 1970s artisan-studio system
 
-Implement the R2 revision instructions, using the existing video at `public/video/artrestartvideo1.mp4` as the hero background. No webm/poster files exist, so the component renders gracefully with just the MP4.
+This is a full visual rebuild of the existing single-page TanStack Start site to match the `design_handoff_art_restart/` system (eggshell paper, four retro pigments, Fraunces + DM Sans + JetBrains Mono, ink-offset shadows, doodle sprite, sentence-case headlines with italic emphasis). Existing route structure stays single-page; the booking modal and confirmation state are added.
 
-### P0 — Hero video background
-- Wrap hero in two layers: video layer (absolute) + content layer (relative, z-index 1).
-- `<video autoPlay loop muted playsInline>` with single MP4 source `/video/artrestartvideo1.mp4`, object-fit cover, Ken Burns drift animation (`kenBurns 40s alternate`).
-- Overlay: warm paper-colored vertical gradient (0.82 → 0.55 → 0.72 → 0.95) + terracotta/amber 135° wash for legibility.
-- Film-grain SVG noise overlay at 0.18 opacity, multiply blend.
-- Mobile (`<600px`): hide `<video>`, show `[data-hero-poster-mobile]` div with paper background fallback (no poster jpg available — use a paper gradient stand-in).
-- Add `@keyframes kenBurns` and reduced-motion override to `src/styles.css`.
-- Add `textShadow: "0 1px 0 rgba(242,233,228,0.8)"` and bump `SOFT` axis from 80 → 100 on the H1.
+### 1. Token + asset layer
+- Copy `colors_and_type.css` → `src/styles/colors_and_type.css` and `@import` it at the top of `src/styles.css` so every `--paper`, `--orange`, `--teal`, `--yellow`, `--pink`, `--ink`, `--font-display`, `--sp-*`, `--grain` token is global.
+- Copy `assets/logo.svg`, `mark.svg`, `doodles.svg` → `public/brand/`. All doodle references use `<use href={\`${import.meta.env.BASE_URL}brand/doodles.svg#sparkle-thick\`}/>` so GitHub Pages subpath resolves correctly.
+- Append component CSS (offerings, marquee, practitioner, writing, contact, modal, confirm, footer) from `reference/styles.css` to `src/styles.css`, plus the `body.grain` paper-noise overlay.
 
-### P0 — Copy fixes
-- Hero subcopy → "Art therapy, creative workshops, and expressive arts programming — for people who want to feel something, and the organizations that make space for them."
-- Convert any `&apos;` / `&ldquo;` / `&rdquo;` to real curly characters (’ “ ”).
-- Card title "For Your Organization" already correct — leave.
+### 2. Fonts
+- Add Google Fonts `<link>` to `src/routes/__root.tsx` head() (Fraunces with full `opsz/wght/SOFT/WONK` axes, DM Sans, JetBrains Mono, Caveat).
 
-### P1 — Studio Notes painted surfaces
-- Add `paintedSurface(colors, angle)` helper combining two radial gradients (light pool + dark pool) with linear gradient.
-- Apply to all 6 tiles; add `box-shadow: inset 0 0 60px rgba(0,0,0,0.15)` on inner container.
+### 3. Rebuild `src/routes/index.tsx`
+Replace the entire current implementation. New section order matches `App.jsx`:
+- **TopBar** — sticky paper bar, mark + "Art *Restart*" wordmark, nav with squiggle-underline active state, dark ink CTA "Book a call →". Mobile: hamburger drawer.
+- **Hero** (split-field) — pink top / yellow bottom, chunky outlined orange uppercase headline "A studio for *starting* again — through *art.*", three photo plates (aqua / orange-oval / yellow with ink-offset shadows) using `gallery-01..03.jpg` cropped into the plates with `Fig. 0X` plate-caps, scattered thick doodles (sparkle, asterisk, bolt, star), rotating "HELD SPACE FOR REAL PEOPLE" badge, lede + orange primary + ghost CTAs.
+- **Marquee** — yellow band, Fraunces italic 28px, "No psych talk. · No wellness pastels. · No stock photos. · Real sessions. · Real materials. · Real mess." looping at 28s.
+- **Offerings** — three cards (paper / teal / orange variants), 16:9 image slot using `gallery-04..06.jpg` with Fig. captions, Fraunces italic-orange titles, dashed-rule price/arrow row.
+- **Practitioner** — `paper-warm` band, mustard-yellow photo plate (rotated -1.2°) with `randi-portrait.jpg`, blockquote in Fraunces 500, Caveat signature "— Randi Yaffa" + mono role "BAFTA-nominee · OATA, CATA".
+- **Writing** — two-column essay grid, ink top-rule per row, mono orange tag + faint date, Fraunces 26px title with italic emphasis.
+- **Contact** — full-bleed `--ink` dark section, two-column copy + form, underline inputs focusing yellow, mustard submit "Send it along →" with ink-offset shadow, post-submit confirmation copy.
+- **Footer** — `paper-dark`, four columns + mandatory mono tiny line "© 2026 Art Restart Studio · Registered member, OATA + CATA · All client art appears with consent, anonymised."
+- **BookModal** — global modal triggered by every "Book a call" CTA. Backdrop blur, paper card with 8px ink-offset shadow, underline inputs, orange submit. On submit → switch view to **Confirm screen** ("That's *in.*" + back-to-studio link).
 
-### P1 — Hand-drawn section dividers (3 only)
-- Add `<SectionDivider>` SVG component (squiggle path).
-- Place: after Manifesto (before TrustBar), before ForIndividuals, before StudioNotes.
+### 4. Voice + copy pass
+Strip every wellness phrase from the current site ("journey", "safe space", "healing", "wellness", "show up as you are", "whole self"). Use sentence case, em-dashes with spaces, Oxford commas, italic on the emotional word in serif headlines, `→` (Unicode) on CTAs. All compliance copy from prior passes (no "psychotherapy/treat/cure/diagnose", no testimonials, footer scope disclosure) preserved.
 
-### P1 — Margin numbering (desktop only)
-- Add vertical `§ NN — LABEL` mono labels to About (§ 07), ForIndividuals (§ 04), ForOrganizations (§ 05).
-- `.hide-mobile` suppresses on small screens.
+### 5. Non-negotiables enforced
+- No emoji anywhere — all decoration via `doodles.svg` `<use>` references.
+- No pure white / pure black — only `--paper` surfaces and `--ink` text.
+- Card shadows are `4px 4px 0 var(--ink)` (hover grows to `6px 6px 0`, press shrinks to `2px 2px 0`). No Gaussian blur on cards.
+- Corners: 0 / 4px inputs / 6px cards / 14px modules. No pills.
+- Body wears `.grain` paper-noise overlay.
 
-### P1 — Naomi's Arrow integration
-- Replace starburst at "through art." with `<ArrowMark size={64} color={terracotta}>`, angled toward cards.
-- Keep mustard starburst, move to upper-right above "starting again".
-- Add centered `<ArrowMark size={40}>` end-of-article mark below About bio.
+### 6. Files touched
+- **New**: `src/styles/colors_and_type.css`, `public/brand/logo.svg`, `public/brand/mark.svg`, `public/brand/doodles.svg`
+- **Edited**: `src/routes/index.tsx` (full rewrite), `src/styles.css` (import tokens + append component CSS + grain), `src/routes/__root.tsx` (Google Fonts link, body class="grain", title/meta refresh)
+- **Reused as-is**: `src/assets/randi-portrait.jpg`, `gallery-01..06.jpg`, `public/video/artrestartvideo1.mp4` (kept available but the new hero is the split-field design — video is no longer the hero background, since the spec calls for a static color-block composition; flagging this)
+- **Untouched**: `design_handoff_art_restart/` (kept as living spec)
 
-### P2 — Motion
-- Stagger via `data-stagger-index` + `transition-delay: calc(var(--i,0) * 80ms)` on grid reveal cards (WhatWeDo, ForIndividuals, ForOrganizations).
-- Hero cascade: `@keyframes heroIn` with delays 0/200/400/550ms on headline/subcopy/cards (instead of scroll-triggered reveal for above-fold).
-- `.path-card h3::after` underline draw on hover.
-- All gated by `prefers-reduced-motion`.
-
-### Files touched
-- `src/routes/index.tsx` — hero rewrite, copy fixes, dividers, margin numbers, arrow mark relocations, painted gallery surfaces, stagger attributes.
-- `src/styles.css` — `@keyframes kenBurns`, `@keyframes heroIn`, mobile video hide rule, path-card underline, stagger CSS var, reduced-motion overrides.
-
-### Notes / deviations
-- No `hero-poster.jpg` or `.webm` exists in repo — using only the MP4 source and a paper-toned mobile fallback div. The component degrades gracefully if the MP4 is ever missing (overlay + paper bg still render).
+### 7. Flagged deviations / open items
+- The new hero is a static split-field per the design spec — the previously-implemented hero video is dropped from the homepage. If you want the video preserved somewhere, say so and I'll place it in a secondary editorial section.
+- Sub-routes ("For You", "For Orgs", "Writing", "About") in `App.jsx` are reached via in-page sections + smooth-scroll anchors in this build (matches the current single-page structure). Splitting into separate TanStack routes is a follow-up.
+- Doodle SVG sprite is referenced via `${BASE_URL}brand/doodles.svg#id` so it works on Lovable preview and GitHub Pages.
+- No real session photography yet — `gallery-*.jpg` placeholders are reused inside the new pigment plates with Fig. captions (per spec's "solid-pigment plate fallback" rule).
 
