@@ -2,19 +2,97 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 
 import appCss from "../styles.css?url";
 
+const ldJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://art-restart.com/#business",
+      name: "Art Restart",
+      description:
+        "Creative arts therapy and expressive arts programming in the Greater Toronto Area.",
+      url: "https://art-restart.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Thornhill",
+        addressRegion: "ON",
+        addressCountry: "CA",
+      },
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Greater Toronto Area" },
+        { "@type": "AdministrativeArea", name: "Ontario" },
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://art-restart.com/#randi",
+      name: "Randi Yaffa",
+      jobTitle: "Art Therapist",
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          name: "D-TATI, Toronto Art Therapy Institute",
+        },
+        { "@type": "EducationalOccupationalCredential", name: "BAA, Film & Photography" },
+      ],
+      award: "BAFTA Nomination — Best Short Animation (Plumber)",
+      worksFor: { "@id": "https://art-restart.com/#business" },
+    },
+  ],
+});
+
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#F2E9E4",
+        color: "#1A1612",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "2rem",
+        fontFamily: '"DM Sans", system-ui, sans-serif',
+      }}
+    >
+      <div style={{ maxWidth: "32rem", textAlign: "center" }}>
+        <h1
+          style={{
+            fontFamily: '"Fraunces", Georgia, serif',
+            fontSize: "5rem",
+            fontWeight: 500,
+            color: "#D96C4A",
+          }}
+        >
+          404
+        </h1>
+        <h2
+          style={{
+            marginTop: "0.5rem",
+            fontFamily: '"Fraunces", Georgia, serif',
+            fontSize: "1.5rem",
+            fontWeight: 500,
+          }}
+        >
+          Page not found
+        </h2>
+        <p style={{ marginTop: "1rem", color: "#5C5048" }}>
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <div className="mt-6">
+        <div style={{ marginTop: "1.5rem" }}>
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            style={{
+              display: "inline-block",
+              padding: "0.85rem 1.5rem",
+              background: "#2A4B5C",
+              color: "#F2E9E4",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+              fontSize: "0.85rem",
+              borderBottom: "3px solid #1A1612",
+            }}
           >
             Go home
           </Link>
@@ -29,21 +107,48 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-    ],
-    links: [
+      { title: "Art Restart — Creative Arts Therapy in Thornhill & the GTA" },
       {
-        rel: "stylesheet",
-        href: appCss,
+        name: "description",
+        content:
+          "Art Restart is a creative arts therapy studio in Thornhill, Ontario. Individual sessions and organizational programming for seniors, adults, teens, and kids. In person and virtual across Ontario.",
+      },
+      { name: "author", content: "Randi Yaffa, D-TATI" },
+      {
+        property: "og:title",
+        content: "Art Restart — Creative Arts Therapy in Thornhill & the GTA",
+      },
+      {
+        property: "og:description",
+        content:
+          "Therapeutic creative arts for individuals, families, and the organizations that care for them. Led by Randi Yaffa, D-TATI.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://art-restart.com" },
+      { property: "og:image", content: "/og-cover.jpg" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/og-cover.jpg" },
+      {
+        name: "twitter:title",
+        content: "Art Restart — Creative Arts Therapy in Thornhill & the GTA",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Therapeutic creative arts for individuals, families, and the organizations that care for them.",
       },
     ],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=DM+Sans:opsz,wght@9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [{ type: "application/ld+json", children: ldJson }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
