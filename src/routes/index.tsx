@@ -441,6 +441,7 @@ const PathCard = ({
 }) => (
   <a
     href={href}
+    className="path-card"
     style={{
       display: "block",
       padding: "clamp(1.75rem, 3vw, 2.5rem)",
