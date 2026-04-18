@@ -1316,7 +1316,8 @@ const StudioNotes = () => {
                   alignItems: "flex-end",
                   justifyContent: "flex-start",
                   padding: "1rem",
-                  background: palette.paperDeep,
+                  background: `radial-gradient(ellipse at 25% 20%, rgba(242,233,228,0.55) 0%, transparent 55%), radial-gradient(ellipse at 80% 85%, rgba(26,22,18,0.45) 0%, transparent 60%), linear-gradient(${135 + (i % 3) * 25}deg, ${palette.paperDeep}, ${palette.paperDark})`,
+                  boxShadow: "inset 0 0 60px rgba(0,0,0,0.15)",
                 }}
               >
                 <img
