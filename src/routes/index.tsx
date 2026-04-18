@@ -522,7 +522,7 @@ const Hero = () => {
             transformOrigin: "center center",
           }}
         >
-          <source src="/video/artrestartvideo1.mp4" type="video/mp4" />
+          <source src={`${import.meta.env.BASE_URL}video/artrestartvideo1.mp4`} type="video/mp4" />
         </video>
         {/* Warm paper gradient overlay for legibility */}
         <div
