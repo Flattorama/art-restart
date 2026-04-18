@@ -1525,6 +1525,17 @@ const About = () => {
             <div
               className="reveal"
               style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "2rem",
+              }}
+            >
+              <ArrowMark size={48} color={palette.terracotta} />
+            </div>
+
+            <div
+              className="reveal"
+              style={{
                 marginTop: "2.5rem",
                 padding: "1.75rem",
                 background: palette.paper,
