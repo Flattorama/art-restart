@@ -719,9 +719,9 @@ const Manifesto = () => (
             fontWeight: 400,
           }}
         >
-          If you can scribble, can&apos;t hold a tune, tripped while dancing or draw stick people —{" "}
+          If you can scribble, can’t hold a tune, tripped while dancing or draw stick people —{" "}
           <span style={{ color: palette.mustard, fontStyle: "normal" }}>
-            you&apos;re exactly who this is for.
+            you’re exactly who this is for.
           </span>
         </p>
       </div>
@@ -775,7 +775,7 @@ const TrustBar = () => {
                 maxWidth: "18ch",
               }}
             >
-              Trusted by Ontario&apos;s leading care communities.
+              Trusted by Ontario’s leading care communities.
             </div>
           </div>
           <div
@@ -876,7 +876,7 @@ const WhatWeDo = () => {
                 maxWidth: "42ch",
               }}
             >
-              Art Restart is a multi-modality creative wellness practice. We don&apos;t pick one
+              Art Restart is a multi-modality creative wellness practice. We don’t pick one
               lane — we follow what works for you, weaving art, music, drama, movement and writing
               into sessions that meet you where you actually are.
             </p>
@@ -974,11 +974,11 @@ const ForIndividuals = () => {
                 lineHeight: 0.98,
               }}
             >
-              You don&apos;t need
+              You don’t need
               <br />
               to be{" "}
               <em style={{ color: palette.mustard, fontVariationSettings: '"SOFT" 100' }}>
-                &ldquo;an artist.&rdquo;
+                “an artist.”
               </em>
             </h2>
             <p
@@ -992,7 +992,7 @@ const ForIndividuals = () => {
               }}
             >
               Art Restart is for everyone. Seniors, adults, teens, kids. If you can scribble,
-              can&apos;t hold a tune, or draw stick people — that&apos;s perfect. This is a safe,
+              can’t hold a tune, or draw stick people — that’s perfect. This is a safe,
               nurturing space, tailored to individuals or small groups.
             </p>
             <p
@@ -1008,7 +1008,7 @@ const ForIndividuals = () => {
             >
               Creative expression supports people through anxiety, depression, PTSD, chronic
               illness, grief, stress, and the ordinary weight of being a person right now.
-              It&apos;s also deeply helpful for neurodivergent individuals and survivors of trauma.
+              It’s also deeply helpful for neurodivergent individuals and survivors of trauma.
             </p>
             <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Button
@@ -1155,9 +1155,9 @@ const ForOrganizations = () => {
                 lineHeight: 1.6,
               }}
             >
-              We&apos;ve worked with Reena, Sheena&apos;s Place, UHN, the JCC, The Battle Centre,
+              We’ve worked with Reena, Sheena’s Place, UHN, the JCC, The Battle Centre,
               DANI, and Youth Empowerment. Each engagement is shaped around the community
-              it&apos;s for.
+              it’s for.
             </p>
             <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Button
@@ -1485,9 +1485,9 @@ const About = () => {
               Randi Yaffa is a qualified art therapist, a graduate of the Toronto Art Therapy
               Institute, and a world-class film and television producer. Her work has been
               recognized with a British Academy Award (BAFTA) nomination for the short animated
-              film <em>Plumber</em>, and several Canadian Screen Award nominations. She&apos;s
+              film <em>Plumber</em>, and several Canadian Screen Award nominations. She’s
               produced some of the most talked-about television, shorts, and commercials on air,
-              and has been trusted with some of the industry&apos;s most iconic characters.
+              and has been trusted with some of the industry’s most iconic characters.
             </p>
 
             <p
@@ -1501,10 +1501,10 @@ const About = () => {
               }}
             >
               Two decades of helping artists tell stories on screen taught her something specific:
-              creative expression isn&apos;t decoration. It&apos;s how people figure themselves
+              creative expression isn’t decoration. It’s how people figure themselves
               out. Art Restart is the practice built from that conviction — a place where
               individuals, families, and care organizations can use the full spectrum of expressive
-              arts to process what&apos;s happening in their lives.
+              arts to process what’s happening in their lives.
             </p>
 
             <p
@@ -1517,7 +1517,7 @@ const About = () => {
                 color: palette.inkMuted,
               }}
             >
-              When she isn&apos;t in the studio, Randi is volunteering, working on another graduate
+              When she isn’t in the studio, Randi is volunteering, working on another graduate
               degree, walking her dog Elvis, and trying to raise two kids who are kind and curious
               about the world.
             </p>
@@ -1634,7 +1634,7 @@ const FAQ = () => {
                 maxWidth: "36ch",
               }}
             >
-              If your question isn&apos;t here, book a free 15-minute chat and ask. There&apos;s no
+              If your question isn’t here, book a free 15-minute chat and ask. There’s no
               wrong starting point.
             </p>
           </div>
@@ -1812,9 +1812,9 @@ const Contact = () => {
                 lineHeight: 0.98,
               }}
             >
-              Let&apos;s see if
+              Let’s see if
               <br />
-              we&apos;re a{" "}
+              we’re a{" "}
               <em style={{ color: palette.mustard, fontVariationSettings: '"SOFT" 100' }}>
                 good fit.
               </em>
