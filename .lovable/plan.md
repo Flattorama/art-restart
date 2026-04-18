@@ -1,48 +1,56 @@
 
 
-## Art Restart redesign — to the 1970s artisan-studio system
+## Restructure home page — calmer, copy-first, Mack & Pouya flow
 
-This is a full visual rebuild of the existing single-page TanStack Start site to match the `design_handoff_art_restart/` system (eggshell paper, four retro pigments, Fraunces + DM Sans + JetBrains Mono, ink-offset shadows, doodle sprite, sentence-case headlines with italic emphasis). Existing route structure stays single-page; the booking modal and confirmation state are added.
+The user wants: (1) hero photo plates moved out from behind the headline so copy is readable, (2) hero must blend into the rest of the page (no hard seam), (3) less visual noise overall, (4) full new copy + new section structure.
 
-### 1. Token + asset layer
-- Copy `colors_and_type.css` → `src/styles/colors_and_type.css` and `@import` it at the top of `src/styles.css` so every `--paper`, `--orange`, `--teal`, `--yellow`, `--pink`, `--ink`, `--font-display`, `--sp-*`, `--grain` token is global.
-- Copy `assets/logo.svg`, `mark.svg`, `doodles.svg` → `public/brand/`. All doodle references use `<use href={\`${import.meta.env.BASE_URL}brand/doodles.svg#sparkle-thick\`}/>` so GitHub Pages subpath resolves correctly.
-- Append component CSS (offerings, marquee, practitioner, writing, contact, modal, confirm, footer) from `reference/styles.css` to `src/styles.css`, plus the `body.grain` paper-noise overlay.
+### Approach
 
-### 2. Fonts
-- Add Google Fonts `<link>` to `src/routes/__root.tsx` head() (Fraunces with full `opsz/wght/SOFT/WONK` axes, DM Sans, JetBrains Mono, Caveat).
+Rewrite `src/routes/index.tsx` to a single scrolling page with these sections in order, all on the same `--paper` background so nothing feels "disconnected":
 
-### 3. Rebuild `src/routes/index.tsx`
-Replace the entire current implementation. New section order matches `App.jsx`:
-- **TopBar** — sticky paper bar, mark + "Art *Restart*" wordmark, nav with squiggle-underline active state, dark ink CTA "Book a call →". Mobile: hamburger drawer.
-- **Hero** (split-field) — pink top / yellow bottom, chunky outlined orange uppercase headline "A studio for *starting* again — through *art.*", three photo plates (aqua / orange-oval / yellow with ink-offset shadows) using `gallery-01..03.jpg` cropped into the plates with `Fig. 0X` plate-caps, scattered thick doodles (sparkle, asterisk, bolt, star), rotating "HELD SPACE FOR REAL PEOPLE" badge, lede + orange primary + ghost CTAs.
-- **Marquee** — yellow band, Fraunces italic 28px, "No psych talk. · No wellness pastels. · No stock photos. · Real sessions. · Real materials. · Real mess." looping at 28s.
-- **Offerings** — three cards (paper / teal / orange variants), 16:9 image slot using `gallery-04..06.jpg` with Fig. captions, Fraunces italic-orange titles, dashed-rule price/arrow row.
-- **Practitioner** — `paper-warm` band, mustard-yellow photo plate (rotated -1.2°) with `randi-portrait.jpg`, blockquote in Fraunces 500, Caveat signature "— Randi Yaffa" + mono role "BAFTA-nominee · OATA, CATA".
-- **Writing** — two-column essay grid, ink top-rule per row, mono orange tag + faint date, Fraunces 26px title with italic emphasis.
-- **Contact** — full-bleed `--ink` dark section, two-column copy + form, underline inputs focusing yellow, mustard submit "Send it along →" with ink-offset shadow, post-submit confirmation copy.
-- **Footer** — `paper-dark`, four columns + mandatory mono tiny line "© 2026 Art Restart Studio · Registered member, OATA + CATA · All client art appears with consent, anonymised."
-- **BookModal** — global modal triggered by every "Book a call" CTA. Backdrop blur, paper card with 8px ink-offset shadow, underline inputs, orange submit. On submit → switch view to **Confirm screen** ("That's *in.*" + back-to-studio link).
+1. **Hero** — Mack & Pouya pattern, but quieter:
+   - Pink top half, yellow bottom half with the split running through the *middle of the headline area* (not under it). The same pink + yellow continues into the next section's top edge to remove the seam.
+   - Headline left-aligned in its own column (≈55% width on desktop), photo plates pushed to the right column only — they no longer overlap the text. Two plates on desktop (rounded-rect aqua + oval orange), one plate stacks below copy on mobile.
+   - Copy: "Welcome to Art *Restart*." + tagline "Where creativity meets healing, and stick figures are highly encouraged." + the two-sentence lede.
+   - Two CTAs: orange primary "Book a free consult →", ghost "Learn more".
+   - Doodles reduced from ~5 to 2 (one sparkle, one asterisk), kept off the text column.
+   - Rotating badge moved to bottom-right of hero so it doesn't crowd the copy.
 
-### 4. Voice + copy pass
-Strip every wellness phrase from the current site ("journey", "safe space", "healing", "wellness", "show up as you are", "whole self"). Use sentence case, em-dashes with spaces, Oxford commas, italic on the emotional word in serif headlines, `→` (Unicode) on CTAs. All compliance copy from prior passes (no "psychotherapy/treat/cure/diagnose", no testimonials, footer scope disclosure) preserved.
+2. **Mission / "Art is for EVERYONE"** — paper bg, centered, generous whitespace. Fraunces headline "Art is for *everyone*." + the "Nervous about your art skills?" paragraph.
 
-### 5. Non-negotiables enforced
-- No emoji anywhere — all decoration via `doodles.svg` `<use>` references.
-- No pure white / pure black — only `--paper` surfaces and `--ink` text.
-- Card shadows are `4px 4px 0 var(--ink)` (hover grows to `6px 6px 0`, press shrinks to `2px 2px 0`). No Gaussian blur on cards.
-- Corners: 0 / 4px inputs / 6px cards / 14px modules. No pills.
-- Body wears `.grain` paper-noise overlay.
+3. **Services — 3-card layout** — paper bg, three offering cards side-by-side (Individual & Group Therapy, Organizational Partnerships, Coming Soon: The Studio). Each card: small doodle icon (sparkle / asterisk / star from sprite — no emoji), Fraunces italic-orange title, body, ink-bordered ghost button. Ink-offset shadow `4px 4px 0 var(--ink)`.
 
-### 6. Files touched
-- **New**: `src/styles/colors_and_type.css`, `public/brand/logo.svg`, `public/brand/mark.svg`, `public/brand/doodles.svg`
-- **Edited**: `src/routes/index.tsx` (full rewrite), `src/styles.css` (import tokens + append component CSS + grain), `src/routes/__root.tsx` (Google Fonts link, body class="grain", title/meta refresh)
-- **Reused as-is**: `src/assets/randi-portrait.jpg`, `gallery-01..06.jpg`, `public/video/artrestartvideo1.mp4` (kept available but the new hero is the split-field design — video is no longer the hero background, since the spec calls for a static color-block composition; flagging this)
-- **Untouched**: `design_handoff_art_restart/` (kept as living spec)
+4. **"The transformative power of *art*"** — slightly tinted band (warm paper variant). Short intro + 5-item benefits grid (Empowerment, Brain Health, Emotional Release, Connection, Relaxation), each with a small doodle bullet.
 
-### 7. Flagged deviations / open items
-- The new hero is a static split-field per the design spec — the previously-implemented hero video is dropped from the homepage. If you want the video preserved somewhere, say so and I'll place it in a secondary editorial section.
-- Sub-routes ("For You", "For Orgs", "Writing", "About") in `App.jsx` are reached via in-page sections + smooth-scroll anchors in this build (matches the current single-page structure). Splitting into separate TanStack routes is a follow-up.
-- Doodle SVG sprite is referenced via `${BASE_URL}brand/doodles.svg#id` so it works on Lovable preview and GitHub Pages.
-- No real session photography yet — `gallery-*.jpg` placeholders are reused inside the new pigment plates with Fig. captions (per spec's "solid-pigment plate fallback" rule).
+5. **About — 50/50 split** — left: Randi portrait in mustard plate (rotated -1.2°, ink-offset shadow). Right: "Meet Randi Yaffa, D-TATI" + role line + the three bio paragraphs + Caveat signature.
+
+6. **Trust banner** — thin horizontal strip, mono uppercase: "Proud to have collaborated with —" then partner names separated by `·`.
+
+7. **Community & Updates — 2 columns** — left: Blog/News teaser with "Read the latest →"; right: Gallery teaser (3-image collage from existing `gallery-*.jpg`) with "View the gallery →".
+
+8. **Footer / Final CTA** — dark `--ink` bg anchoring the page. "Ready to *restart*?" + "Email Randi" button + Email/Phone/Instagram placeholder lines + the existing OATA/CATA compliance line.
+
+### Changes to make seam disappear
+
+- Remove the abrupt yellow→paper cut at hero bottom. Instead: hero's yellow band fades into a thin painted border into the Mission section's paper, OR the Mission section opens with a yellow accent bar at the very top so the eye reads continuity.
+- Keep the body `.grain` overlay across all sections so texture is unbroken.
+- All section dividers become Fraunces section eyebrows (`§ 02 — services`) instead of color blocks.
+
+### Noise reduction
+
+- Drop the marquee, the writing/essays grid, the painted-surface gallery tiles, and the hero-edge "Fig. 01 — The Studio · Toronto" caption.
+- Doodles capped at ~1–2 per section, never near body copy.
+- Keep ink-offset card shadow language but no rotated cards except the Randi plate.
+
+### Files touched
+
+- `src/routes/index.tsx` — full rewrite of section composition + new copy.
+- `src/styles.css` — add `.hero-2col` grid, hero→mission transition rule, benefits grid, trust strip, two-col community block, footer-dark CTA. Remove unused marquee/writing-related classes if no longer referenced.
+- No new assets needed; reuse `randi-portrait.jpg`, `gallery-01..06.jpg`, existing doodle sprite.
+
+### Out of scope / flagged
+
+- Real email, phone, Instagram handle — using bracketed placeholders per the brief; user fills in later.
+- "Coming Soon: The Studio" waitlist button currently opens the existing book modal in newsletter mode (no separate backend); flag for future Lovable Cloud wiring.
+- The "safe space" / "healing" wording in the new copy contradicts the earlier voice rules in `design_handoff_art_restart/README.md`. Honoring the user's explicit new copy verbatim and overriding the prior voice guard for this pass.
 
