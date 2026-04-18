@@ -136,9 +136,119 @@
   * {
     border-color: var(--color-border);
   }
-
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-  }
 }
+
+/* ============================================================================
+   ART RESTART — editorial magazine theme
+   ============================================================================ */
+
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: #f2e9e4;
+  color: #1a1612;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.6;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+}
+
+#root {
+  position: relative;
+  z-index: 2;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Fraunces", "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variation-settings: "SOFT" 50;
+  margin: 0;
+}
+
+p { line-height: 1.65; max-width: 65ch; margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+.drop-cap::first-letter {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 5.5em;
+  font-weight: 500;
+  float: left;
+  line-height: 0.8;
+  margin: 0.08em 0.08em -0.1em 0;
+  color: #d96c4a;
+  font-variation-settings: "SOFT" 100;
+}
+
+.fig-label {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5c5048;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+.inline-link {
+  border-bottom: 1px solid #d96c4a;
+  padding-bottom: 1px;
+  transition: color 0.2s;
+}
+.inline-link:hover { color: #d96c4a; }
+
+@media (max-width: 900px) {
+  .stack-mobile { grid-template-columns: 1fr !important; }
+  .hide-mobile { display: none !important; }
+  .show-mobile { display: flex !important; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 1rem; }
+}
+
+*:focus-visible {
+  outline: 2px solid #2a4b5c;
+  outline-offset: 3px;
+}
+
+::selection { background: #d96c4a; color: #f2e9e4; }
+
