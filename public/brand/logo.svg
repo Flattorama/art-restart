@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80" aria-label="Art Restart">
+  
+  <g fill="none" stroke="#1F1A14" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    
+    <path d="M12 40 C 14 18, 58 14, 66 36 C 70 54, 38 62, 18 54 C 10 50, 10 46, 12 40 Z"></path>
+  </g>
+  <text x="24" y="48" font-family="Fraunces, Georgia, serif" font-size="28" font-weight="700" font-style="italic" fill="#C8502D">Art</text>
+  <text x="76" y="48" font-family="Fraunces, Georgia, serif" font-size="28" font-weight="700" fill="#1F1A14">Restart</text>
+  
+  <g fill="none" stroke="#34605D" stroke-width="2.2" stroke-linecap="round">
+    <path d="M74 58 C 120 68, 200 64, 232 54"></path>
+    <path d="M232 54 L 222 48 M232 54 L 222 60"></path>
+  </g>
+  
+  <g fill="none" stroke="#D4A63A" stroke-width="1.8" stroke-linecap="round" transform="translate(238,18)">
+    <path d="M0 -8 L 0 8"></path>
+    <path d="M-8 0 L 8 0"></path>
+    <path d="M-5 -5 L 5 5"></path>
+    <path d="M-5 5 L 5 -5"></path>
+  </g>
+</svg>

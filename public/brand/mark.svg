@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" aria-label="Art Restart Mark">
+  
+  <path d="M10 40 C 12 18, 56 14, 64 36 C 68 54, 36 62, 16 54 C 8 50, 8 46, 10 40 Z" fill="#F2E8D5" stroke="#1F1A14" stroke-width="2.4" stroke-linejoin="round"></path>
+  <text x="40" y="48" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="700" font-style="italic" fill="#C8502D">A</text>
+  <g fill="none" stroke="#34605D" stroke-width="2" stroke-linecap="round">
+    <path d="M20 68 C 40 74, 56 72, 68 62"></path>
+    <path d="M68 62 L 60 58 M68 62 L 60 68"></path>
+  </g>
+</svg>
