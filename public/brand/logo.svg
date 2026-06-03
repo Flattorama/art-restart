@@ -1,21 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80" aria-label="Art Restart">
-  
-  <g fill="none" stroke="#1F1A14" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-    
-    <path d="M12 40 C 14 18, 58 14, 66 36 C 70 54, 38 62, 18 54 C 10 50, 10 46, 12 40 Z"></path>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 92" width="320" height="92" aria-label="Art Restart">
+  <g transform="translate(4 6)">
+    <g fill="none" stroke="#2c2c2c" stroke-width="2.5" stroke-linecap="round">
+      <path d="M39 39 L39 6 M39 39 L39 73 M39 39 L10 22 M39 39 L68 56 M39 39 L68 22 M39 39 L10 56 M39 39 L5 39 M39 39 L74 39"/>
+    </g>
+    <circle cx="39" cy="39" r="4.5" fill="#2c2c2c"/>
+    <circle cx="39" cy="6" r="5.5" fill="#f45a1d"/>
+    <circle cx="39" cy="73" r="5.5" fill="#b2dfdb"/>
+    <circle cx="10" cy="22" r="4.5" fill="#ffeb3b"/>
+    <circle cx="68" cy="56" r="4.5" fill="#00bcd4"/>
+    <circle cx="68" cy="22" r="5.5" fill="#e91e63"/>
+    <circle cx="10" cy="56" r="4.5" fill="#00bcd4"/>
+    <circle cx="5" cy="39" r="4" fill="#2c2c2c"/>
+    <circle cx="74" cy="39" r="6" fill="#ffeb3b"/>
   </g>
-  <text x="24" y="48" font-family="Fraunces, Georgia, serif" font-size="28" font-weight="700" font-style="italic" fill="#C8502D">Art</text>
-  <text x="76" y="48" font-family="Fraunces, Georgia, serif" font-size="28" font-weight="700" fill="#1F1A14">Restart</text>
-  
-  <g fill="none" stroke="#34605D" stroke-width="2.2" stroke-linecap="round">
-    <path d="M74 58 C 120 68, 200 64, 232 54"></path>
-    <path d="M232 54 L 222 48 M232 54 L 222 60"></path>
-  </g>
-  
-  <g fill="none" stroke="#D4A63A" stroke-width="1.8" stroke-linecap="round" transform="translate(238,18)">
-    <path d="M0 -8 L 0 8"></path>
-    <path d="M-8 0 L 8 0"></path>
-    <path d="M-5 -5 L 5 5"></path>
-    <path d="M-5 5 L 5 -5"></path>
-  </g>
+  <text x="94" y="55" font-family="Fraunces, Georgia, serif" font-size="34" font-weight="800" fill="#00a2ad">Art</text>
+  <text x="154" y="55" font-family="Fraunces, Georgia, serif" font-size="34" font-weight="800" font-style="italic" fill="#f45a1d">Restart</text>
 </svg>
