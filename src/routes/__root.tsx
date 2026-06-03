@@ -46,13 +46,13 @@ function NotFoundComponent() {
     <div
       style={{
         minHeight: "100vh",
-        background: "#F2E9E4",
-        color: "#1A1612",
+        background: "#fcf9f0",
+        color: "#2c2c2c",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         padding: "2rem",
-        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontFamily: '"Space Grotesk", system-ui, sans-serif',
       }}
     >
       <div style={{ maxWidth: "32rem", textAlign: "center" }}>
@@ -61,7 +61,7 @@ function NotFoundComponent() {
             fontFamily: '"Fraunces", Georgia, serif',
             fontSize: "5rem",
             fontWeight: 500,
-            color: "#D96C4A",
+            color: "#f45a1d",
           }}
         >
           404
@@ -76,7 +76,7 @@ function NotFoundComponent() {
         >
           Page not found
         </h2>
-        <p style={{ marginTop: "1rem", color: "#5C5048" }}>
+        <p style={{ marginTop: "1rem", color: "#5f5f5f" }}>
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <div style={{ marginTop: "1.5rem" }}>
@@ -85,13 +85,13 @@ function NotFoundComponent() {
             style={{
               display: "inline-block",
               padding: "0.85rem 1.5rem",
-              background: "#2A4B5C",
-              color: "#F2E9E4",
+              background: "#00bcd4",
+              color: "#2c2c2c",
               fontWeight: 600,
               letterSpacing: "0.04em",
               textTransform: "uppercase",
               fontSize: "0.85rem",
-              borderBottom: "3px solid #1A1612",
+              borderBottom: "3px solid #2c2c2c",
             }}
           >
             Go home
@@ -145,7 +145,7 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400..700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400..700&display=swap",
       },
     ],
     scripts: [{ type: "application/ld+json", children: ldJson }],
