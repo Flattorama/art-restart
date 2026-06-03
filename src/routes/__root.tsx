@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import heroTightCss from "../styles/hero-tight.css?url";
 
 const ldJson = JSON.stringify({
   "@context": "https://schema.org",
@@ -140,6 +141,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "stylesheet", href: heroTightCss },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
