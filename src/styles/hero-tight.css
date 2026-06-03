@@ -154,3 +154,10 @@
     transform: translateY(-12px);
   }
 }
+
+.randi-copy .credential-line {
+  color: var(--ink-soft);
+  font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
