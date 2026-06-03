@@ -85,7 +85,8 @@ function Hero({ onBook }: { onBook: () => void }) {
       <div className="hero-copy">
         <div className="fig">Fig. 1 - Welcome</div>
         <h1>
-          Welcome to <em>Art Restart.</em>
+          <span className="hero-title-line">Welcome to</span>
+          <em>Art Restart.</em>
         </h1>
         <p className="hero-kicker">
           Where <em>creativity</em> meets <strong>healing</strong>, and stuck figures are gently encouraged.
