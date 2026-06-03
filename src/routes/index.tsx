@@ -260,8 +260,9 @@ function AboutRandi() {
       <div className="randi-copy">
         <div className="fig">Fig. 5 - Meet the therapist</div>
         <h2>
-          Meet <em>Randi Yaffa,</em> D-TATI
+          Meet <em>Randi Yaffa</em>
         </h2>
+        <p className="role-line credential-line">D-TATI, Registered Psychotherapist (Qualifying)</p>
         <p className="role-line">Art therapist - storyteller - limitless creative</p>
         <p>
           I&apos;m Randi, a qualified art therapist (Toronto Art Therapy Institute) with a BAA in film and photography.
