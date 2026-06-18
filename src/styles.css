@@ -126,11 +126,12 @@ ul {
 
 .site {
   background: var(--surface);
-  margin: 0 auto;
-  max-width: 1440px;
+  margin: 0;
+  max-width: none;
   min-height: 100vh;
   overflow: hidden;
   position: relative;
+  width: 100%;
   z-index: 2;
 }
 
@@ -184,16 +185,21 @@ ul {
 }
 
 .topbar {
-  align-items: center;
   background: rgba(252, 249, 240, 0.9);
   border-bottom: 1px solid rgba(44, 44, 44, 0.12);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
   min-height: 82px;
-  padding: 14px clamp(18px, 4vw, 64px);
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+.topbar-inner {
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 14px clamp(18px, 4vw, 64px);
 }
 
 .brand {
@@ -292,11 +298,17 @@ ul {
     radial-gradient(circle at 88% 12%, rgba(255, 235, 59, 0.36), transparent 18%),
     linear-gradient(145deg, rgba(234, 217, 236, 0.96), rgba(234, 217, 236, 0.72) 54%, rgba(178, 223, 219, 0.45) 54%),
     var(--surface-lavender);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-inner {
   display: grid;
   gap: clamp(32px, 5vw, 72px);
   grid-template-columns: minmax(0, 0.94fr) minmax(420px, 1.06fr);
+  margin: 0 auto;
+  max-width: 1440px;
   min-height: 690px;
-  overflow: hidden;
   padding: clamp(58px, 8vw, 104px) clamp(20px, 6vw, 92px) clamp(74px, 8vw, 112px);
   position: relative;
 }
@@ -638,11 +650,17 @@ ul {
     radial-gradient(circle at 4% 100%, var(--orange) 0 8%, transparent 8.5%),
     radial-gradient(circle at 11% 100%, var(--yellow) 0 9%, transparent 9.5%),
     linear-gradient(135deg, rgba(178, 223, 219, 0.96), rgba(191, 232, 239, 0.92));
+  overflow: hidden;
+  padding: clamp(70px, 8vw, 106px) clamp(20px, 6vw, 92px);
+  position: relative;
+}
+
+.benefits-inner {
   display: grid;
   gap: 46px;
   grid-template-columns: 0.7fr 1fr;
-  overflow: hidden;
-  padding: clamp(70px, 8vw, 106px) clamp(20px, 6vw, 92px);
+  margin: 0 auto;
+  max-width: 1180px;
   position: relative;
 }
 
@@ -710,12 +728,17 @@ ul {
 }
 
 .about-randi {
-  align-items: center;
   background: var(--surface);
+  padding: clamp(74px, 8vw, 112px) clamp(20px, 6vw, 92px);
+}
+
+.about-randi-inner {
+  align-items: center;
   display: grid;
   gap: clamp(40px, 7vw, 86px);
   grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
-  padding: clamp(74px, 8vw, 112px) clamp(20px, 6vw, 92px);
+  margin: 0 auto;
+  max-width: 1180px;
 }
 
 .portrait-plate {
@@ -1202,7 +1225,7 @@ ul {
 }
 
 @media (max-width: 1080px) {
-  .hero {
+  .hero-inner {
     grid-template-columns: 1fr;
     min-height: auto;
   }
@@ -1218,7 +1241,7 @@ ul {
     width: 100%;
   }
 
-  .benefits {
+  .benefits-inner {
     grid-template-columns: 1fr;
   }
 
@@ -1229,6 +1252,10 @@ ul {
 
 @media (max-width: 900px) {
   .topbar {
+    min-height: 72px;
+  }
+
+  .topbar-inner {
     grid-template-columns: 1fr auto;
     min-height: 72px;
   }
@@ -1250,7 +1277,7 @@ ul {
     display: none;
   }
 
-  .topbar.open .nav {
+  .topbar.open .topbar-inner .nav {
     background: var(--surface);
     border-bottom: 1px solid var(--rule);
     display: grid;
@@ -1261,7 +1288,7 @@ ul {
     padding: 22px 20px;
   }
 
-  .topbar.open .nav-cta {
+  .topbar.open .topbar-inner .nav-cta {
     display: inline-flex;
     grid-column: 1 / -1;
     justify-self: start;
@@ -1270,7 +1297,7 @@ ul {
 
   .section-head,
   .service-grid,
-  .about-randi,
+  .about-randi-inner,
   .community-grid,
   .footer-meta {
     grid-template-columns: 1fr;
@@ -1295,7 +1322,7 @@ ul {
 }
 
 @media (max-width: 620px) {
-  .hero {
+  .hero-inner {
     padding-top: 48px;
   }
 
