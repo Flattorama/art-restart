@@ -83,7 +83,6 @@ function Hero({ onBook }: { onBook: () => void }) {
 
       <div className="hero2-inner">
         <div className="hero2-copy">
-          <div className="eyebrow">Fig. I — Welcome</div>
           <h1 className="hero2-headline">
             Welcome to <em>Art Restart.</em>
           </h1>
@@ -133,7 +132,6 @@ function Mission() {
   return (
     <section className="mission" id="mission">
       <div className="mission-inner">
-        <div className="eyebrow">§ 01 — Our mission</div>
         <h2>
           Art is for <em>everyone.</em>
         </h2>
@@ -178,7 +176,6 @@ function Services({ onBook }: { onBook: () => void }) {
     <section className="services" id="services">
       <div className="section-head">
         <div>
-          <div className="eyebrow">§ 02 — Our services</div>
           <h2>
             Three ways <em>in.</em>
           </h2>
@@ -220,7 +217,6 @@ function Benefits() {
     <section className="benefits" id="benefits">
       <div className="section-head">
         <div>
-          <div className="eyebrow">§ 03 — Why art therapy</div>
           <h2>
             The transformative power of <em>art.</em>
           </h2>
@@ -255,7 +251,6 @@ function AboutRandi() {
           <div className="plate-cap">Fig. 04 — Randi Yaffa</div>
         </div>
         <div className="about-copy">
-          <div className="eyebrow">§ 04 — Meet the practitioner</div>
           <h2>
             Meet <em>Randi Yaffa,</em> D-TATI
           </h2>
@@ -315,7 +310,6 @@ function Community() {
     <section className="community" id="community">
       <div className="section-head">
         <div>
-          <div className="eyebrow">§ 05 — Updates</div>
           <h2>
             Community &amp; <em>updates.</em>
           </h2>
@@ -361,7 +355,6 @@ function FinalFooter({ onBook }: { onBook: () => void }) {
   return (
     <footer className="final" id="contact">
       <div className="final-inner">
-        <div className="eyebrow">§ 06 — Get in touch</div>
         <h2>
           Ready to <em>restart?</em>
         </h2>
@@ -417,20 +410,8 @@ function BookModal({ open, onClose }: { open: boolean; onClose: () => void }) {
         >
           ×
         </button>
-        {!confirmed ? (
+          {!confirmed ? (
           <>
-            <div
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "var(--ink-faint)",
-                marginBottom: 10,
-              }}
-            >
-              Fig. 00 — Free 20-min consult
-            </div>
             <h3>
               Book a <em>free consult.</em>
             </h3>
