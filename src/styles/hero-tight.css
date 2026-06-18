@@ -1,0 +1,245 @@
+/* Reference-matched hero pass.
+   Locks the desktop banner to a laptop-friendly height and places the collage left of the copy. */
+
+@media (min-width: 1081px) {
+  .topbar {
+    min-height: 68px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+  }
+
+  .brand {
+    width: 94px;
+  }
+
+  .brand img {
+    height: 56px;
+    object-fit: contain;
+    width: 56px;
+  }
+
+  .hero {
+    align-items: center;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(255, 235, 59, 0.34), transparent 17%),
+      linear-gradient(144deg, rgba(234, 217, 236, 0.96) 0 53%, rgba(203, 219, 229, 0.88) 53% 100%),
+      var(--surface-lavender);
+    gap: clamp(18px, 2.6vw, 42px);
+    grid-template-columns: minmax(480px, 1.04fr) minmax(500px, 0.96fr);
+    height: clamp(620px, calc(100svh - 68px), 720px);
+    min-height: 0;
+    padding: clamp(32px, 4vw, 54px) clamp(36px, 6vw, 92px) clamp(32px, 4vw, 50px);
+  }
+
+  .hero-copy {
+    align-self: center;
+    grid-column: 2;
+    grid-row: 1;
+    max-width: 590px;
+    transform: translateY(-14px);
+  }
+
+  .hero-title-line {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.2rem, 5.7vw, 5.9rem);
+    letter-spacing: -0.025em;
+    line-height: 0.88;
+    margin: 6px 0 18px;
+  }
+
+  .hero h1 em {
+    display: block;
+  }
+
+  .hero-kicker {
+    font-size: clamp(1.24rem, 1.7vw, 1.58rem);
+    line-height: 1.18;
+    margin-bottom: 14px;
+    max-width: 620px;
+  }
+
+  .hero-lede {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 22px;
+    max-width: 43ch;
+  }
+
+  .hero-actions {
+    gap: 12px;
+  }
+
+  .hero-actions .btn {
+    min-height: 44px;
+    padding: 11px 18px;
+  }
+
+  .hero-art {
+    align-self: center;
+    aspect-ratio: auto;
+    grid-column: 1;
+    grid-row: 1;
+    height: clamp(390px, 42vw, 510px);
+    justify-self: center;
+    margin: 0;
+    min-height: 0;
+    position: relative;
+    transform: translateY(-6px);
+    width: clamp(500px, 44vw, 620px);
+  }
+
+  .plate-main {
+    height: 70%;
+    left: 13%;
+    top: 7%;
+    transform: rotate(-4.5deg);
+    width: 58%;
+  }
+
+  .plate-detail {
+    height: 41%;
+    left: 58%;
+    right: auto;
+    top: 42%;
+    transform: rotate(5deg);
+    width: 35%;
+  }
+
+  .plate-small {
+    bottom: 8%;
+    height: 33%;
+    left: 7%;
+    width: 39%;
+  }
+
+  .plate-pin-a {
+    height: 66px;
+    left: 9%;
+    top: 70%;
+    width: 66px;
+  }
+
+  .plate-pin-b {
+    color: var(--teal-dark);
+    height: 58px;
+    left: 66%;
+    top: 34%;
+    width: 58px;
+  }
+
+  .hero-motif-a {
+    color: var(--yellow-deep);
+    height: 42px;
+    left: 50%;
+    top: 46%;
+    width: 42px;
+  }
+
+  .hero-motif-b {
+    color: var(--orange);
+    height: 88px;
+    right: 5%;
+    top: 9%;
+    width: 88px;
+  }
+
+  .hero-motif-c {
+    color: var(--ink);
+    height: 74px;
+    right: 10%;
+    top: 28%;
+    width: 74px;
+  }
+
+  .hero-swoosh {
+    bottom: auto;
+    color: var(--teal-dark);
+    height: 60px;
+    left: 47%;
+    right: auto;
+    top: 49%;
+    transform: rotate(-12deg);
+    width: 154px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .hero {
+    height: auto;
+    min-height: 0;
+    padding-bottom: 46px;
+    padding-top: 54px;
+  }
+
+  .hero-copy {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 760px;
+    transform: none;
+  }
+
+  .hero-title-line {
+    display: block;
+  }
+
+  .hero-art {
+    grid-column: 1;
+    grid-row: 2;
+    height: 430px;
+    justify-self: center;
+    margin: 0 auto;
+    min-height: 0;
+    transform: translateY(-16px);
+    width: min(100%, 640px);
+  }
+}
+
+@media (max-width: 900px) {
+  .brand img {
+    height: 54px;
+    object-fit: contain;
+    width: 54px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero {
+    padding-bottom: 34px;
+    padding-top: 36px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 16vw, 4.8rem);
+  }
+
+  .hero-kicker {
+    font-size: clamp(1.15rem, 5vw, 1.45rem);
+  }
+
+  .hero-lede {
+    margin-bottom: 18px;
+  }
+
+  .hero-art {
+    height: 285px;
+    min-height: 0;
+    transform: translateY(-12px);
+  }
+
+  .hero-motif-a,
+  .hero-motif-b,
+  .hero-motif-c,
+  .hero-swoosh {
+    display: none;
+  }
+}
+
+.randi-copy .credential-line {
+  color: var(--ink-soft);
+  font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}

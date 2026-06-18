@@ -6,9 +6,8 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Base path: "/" locally and in Lovable preview, "/<repo-name>/" on GitHub Pages.
-// The deploy workflow sets GITHUB_PAGES_BASE at build time.
-const base = process.env.GITHUB_PAGES_BASE || "/";
+// Hardcoded to root "/" for the custom domain art-restart.com
+const base = "/";
 
 export default defineConfig({
   vite: {

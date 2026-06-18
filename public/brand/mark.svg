@@ -1,9 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" aria-label="Art Restart Mark">
-  
-  <path d="M10 40 C 12 18, 56 14, 64 36 C 68 54, 36 62, 16 54 C 8 50, 8 46, 10 40 Z" fill="#F2E8D5" stroke="#1F1A14" stroke-width="2.4" stroke-linejoin="round"></path>
-  <text x="40" y="48" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="700" font-style="italic" fill="#C8502D">A</text>
-  <g fill="none" stroke="#34605D" stroke-width="2" stroke-linecap="round">
-    <path d="M20 68 C 40 74, 56 72, 68 62"></path>
-    <path d="M68 62 L 60 58 M68 62 L 60 68"></path>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" aria-label="Art Restart mark">
+  <g fill="none" stroke="#2c2c2c" stroke-width="2.8" stroke-linecap="round">
+    <path d="M50 50 L50 13 M50 50 L50 87 M50 50 L17 31 M50 50 L83 69 M50 50 L83 31 M50 50 L17 69 M50 50 L11 50 M50 50 L89 50"/>
   </g>
+  <circle cx="50" cy="50" r="5" fill="#2c2c2c"/>
+  <circle cx="50" cy="13" r="6" fill="#f45a1d"/>
+  <circle cx="50" cy="87" r="6" fill="#b2dfdb"/>
+  <circle cx="17" cy="31" r="5" fill="#ffeb3b"/>
+  <circle cx="83" cy="69" r="5" fill="#00bcd4"/>
+  <circle cx="83" cy="31" r="6" fill="#e91e63"/>
+  <circle cx="17" cy="69" r="5" fill="#00bcd4"/>
+  <circle cx="11" cy="50" r="4.5" fill="#2c2c2c"/>
+  <circle cx="89" cy="50" r="6.5" fill="#ffeb3b"/>
 </svg>
