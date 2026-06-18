@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type TouchEvent } from "react";
 
-import randiPortrait from "@/assets/randi-portrait.jpg";
 import gallery01 from "@/assets/gallery-01.jpg";
 import gallery02 from "@/assets/gallery-02.jpg";
 import gallery03 from "@/assets/gallery-03.jpg";
@@ -13,6 +12,7 @@ export const Route = createFileRoute("/")({
 const BASE = import.meta.env.BASE_URL;
 const doodle = (id: string) => `${BASE}brand/doodles.svg#${id}`;
 const logoUrl = `${BASE}brand/logo.svg`;
+const randiProfileUrl = `${BASE}gallery/${encodeURIComponent("Randi Profile Picture.jpeg")}`;
 const galleryPhotoFiles = [
   "WhatsApp Image 2026-06-18 at 10.40.40 AM (1).jpeg",
   "WhatsApp Image 2026-06-18 at 10.40.40 AM (2).jpeg",
@@ -119,7 +119,6 @@ function Hero({ onBook }: { onBook: () => void }) {
       <WideMotif id="swoosh" className="hero-swoosh" />
 
       <div className="hero-copy">
-        <div className="fig">Fig. 1 - Welcome</div>
         <h1>
           <span className="hero-title-line">Welcome to</span>
           <em>Art Restart.</em>
@@ -164,7 +163,6 @@ function AboutMission() {
       <Motif id="sparkle-four" className="mission-motif mission-motif-a" />
       <Motif id="starburst" className="mission-motif mission-motif-b" />
       <div className="mission-inner">
-        <div className="fig">Fig. 2 - Everyone</div>
         <h2>
           Art is for <em>everyone.</em>
         </h2>
@@ -184,7 +182,6 @@ function Services({ onBook }: { onBook: () => void }) {
     {
       tone: "mint",
       icon: "sputnik-color",
-      eyebrow: "Fig. 2A - Therapy",
       title: (
         <>
           Individual <em>art therapy</em>
@@ -196,7 +193,6 @@ function Services({ onBook }: { onBook: () => void }) {
     {
       tone: "lavender",
       icon: "starburst",
-      eyebrow: "Fig. 2B - Partnerships",
       title: (
         <>
           Organizational <em>partnerships</em>
@@ -208,7 +204,6 @@ function Services({ onBook }: { onBook: () => void }) {
     {
       tone: "yellow",
       icon: "sparkle-slim",
-      eyebrow: "Fig. 2C - Coming soon",
       title: (
         <>
           The <em>Studio,</em> coming soon
@@ -223,7 +218,6 @@ function Services({ onBook }: { onBook: () => void }) {
     <section className="services" id="services">
       <div className="section-head">
         <div>
-          <div className="fig">Fig. 3 - Our services</div>
           <h2>
             Three ways <em>in.</em>
           </h2>
@@ -236,9 +230,8 @@ function Services({ onBook }: { onBook: () => void }) {
 
       <div className="service-grid">
         {services.map((service) => (
-          <article className={`service-card ${service.tone}`} key={service.eyebrow}>
+          <article className={`service-card ${service.tone}`} key={service.tone}>
             <Motif id={service.icon} className="service-icon" />
-            <div className="fig">{service.eyebrow}</div>
             <h3>{service.title}</h3>
             <p>{service.body}</p>
             <button className="card-link" onClick={onBook}>
@@ -265,7 +258,6 @@ function Benefits() {
       <WideMotif id="swoosh" className="benefits-swoosh" />
       <Motif id="starburst" className="benefits-burst" />
       <div className="benefits-copy">
-        <div className="fig">Fig. 4 - Why art therapy</div>
         <h2>
           The transformative power of <em>art.</em>
         </h2>
@@ -291,11 +283,10 @@ function AboutRandi() {
   return (
     <section className="about-randi" id="randi">
       <div className="portrait-plate">
-        <img src={randiPortrait} alt="Randi Yaffa seated at an art table." />
+        <img src={randiProfileUrl} alt="Randi Yaffa." />
         <Motif id="sputnik-color" className="portrait-mark" />
       </div>
       <div className="randi-copy">
-        <div className="fig">Fig. 5 - Meet the therapist</div>
         <h2>
           Meet <em>Randi Yaffa</em>
         </h2>
@@ -431,7 +422,6 @@ function Community() {
       <Motif id="sparkle-slim" className="community-sparkle" />
       <div className="section-head">
         <div>
-          <div className="fig">Fig. 6 - Community & updates</div>
           <h2>
             Community &amp; <em>updates.</em>
           </h2>
@@ -441,7 +431,6 @@ function Community() {
 
       <div className="community-grid">
         <article className="update-card">
-          <div className="fig">The blog - News</div>
           <h3>
             Studio notes, <em>thoughts on creativity.</em>
           </h3>
@@ -453,7 +442,6 @@ function Community() {
         </article>
 
         <article className="gallery-card">
-          <div className="fig">The gallery</div>
           <div className="gallery-strip">
             {previewPhotos.map((photo, index) => (
               <button
@@ -488,7 +476,6 @@ function FinalFooter({ onBook }: { onBook: () => void }) {
       <Motif id="radial-burst" className="footer-motif footer-motif-a" />
       <WideMotif id="swoosh" className="footer-swoosh" />
       <div className="final-inner">
-        <div className="fig">Fig. 7 - Get in touch</div>
         <h2>
           Ready to <em>restart?</em>
         </h2>
@@ -553,7 +540,6 @@ function BookModal({ open, onClose }: { open: boolean; onClose: () => void }) {
         {!confirmed ? (
           <>
             <Motif id="sputnik-color" className="modal-motif" />
-            <div className="fig">Fig. 0 - Free 20-min consult</div>
             <h2 id="book-title">
               Book a <em>free consult.</em>
             </h2>
