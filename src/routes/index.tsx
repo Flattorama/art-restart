@@ -81,31 +81,33 @@ function TopBar({ onBook }: { onBook: () => void }) {
 
   return (
     <nav className={"topbar" + (open ? " open" : "")} aria-label="Primary navigation">
-      <a className="brand" href="#top" onClick={() => setOpen(false)}>
-        <img src={logoUrl} alt="Art Restart" />
-      </a>
+      <div className="topbar-inner">
+        <a className="brand" href="#top" onClick={() => setOpen(false)}>
+          <img src={logoUrl} alt="Art Restart" />
+        </a>
 
-      <div className="nav">
-        {items.map((item) => (
-          <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
-            {item.label}
-          </a>
-        ))}
+        <div className="nav">
+          {items.map((item) => (
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+              {item.label}
+            </a>
+          ))}
+        </div>
+
+        <button className="nav-cta" onClick={onBook}>
+          Book a free consult <span aria-hidden="true">→</span>
+        </button>
+
+        <button
+          className="menu-btn"
+          aria-label="Menu"
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span />
+          <span />
+        </button>
       </div>
-
-      <button className="nav-cta" onClick={onBook}>
-        Book a free consult <span aria-hidden="true">→</span>
-      </button>
-
-      <button
-        className="menu-btn"
-        aria-label="Menu"
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <span />
-        <span />
-      </button>
     </nav>
   );
 }
@@ -118,40 +120,42 @@ function Hero({ onBook }: { onBook: () => void }) {
       <Motif id="sputnik" className="hero-motif hero-motif-c" />
       <WideMotif id="swoosh" className="hero-swoosh" />
 
-      <div className="hero-copy">
-        <h1>
-          <span className="hero-title-line">Welcome to</span>
-          <em>Art Restart.</em>
-        </h1>
-        <p className="hero-kicker">
-          Where <em>creativity</em> meets <strong>healing</strong>, and stuck figures are gently encouraged.
-        </p>
-        <p className="hero-lede">
-          Whether you&apos;re seeking a creative therapeutic outlet to escape life&apos;s daily stresses, or an
-          organization looking for an engaging wellness program, you&apos;ve found a welcoming space to grow.
-        </p>
-        <div className="hero-actions">
-          <button className="btn btn-primary" onClick={onBook}>
-            Book a free consult <span aria-hidden="true">→</span>
-          </button>
-          <a className="btn btn-quiet" href="#about">
-            Learn more
-          </a>
+      <div className="hero-inner">
+        <div className="hero-copy">
+          <h1>
+            <span className="hero-title-line">Welcome to</span>
+            <em>Art Restart.</em>
+          </h1>
+          <p className="hero-kicker">
+            Where <em>creativity</em> meets <strong>healing</strong>, and stuck figures are gently encouraged.
+          </p>
+          <p className="hero-lede">
+            Whether you&apos;re seeking a creative therapeutic outlet to escape life&apos;s daily stresses, or an
+            organization looking for an engaging wellness program, you&apos;ve found a welcoming space to grow.
+          </p>
+          <div className="hero-actions">
+            <button className="btn btn-primary" onClick={onBook}>
+              Book a free consult <span aria-hidden="true">→</span>
+            </button>
+            <a className="btn btn-quiet" href="#about">
+              Learn more
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div className="hero-art" aria-label="Art materials and painted textures">
-        <div className="plate plate-main">
-          <img src={gallery01} alt="Bright abstract paint strokes in orange, yellow, and teal." />
+        <div className="hero-art" aria-label="Art materials and painted textures">
+          <div className="plate plate-main">
+            <img src={gallery01} alt="Bright abstract paint strokes in orange, yellow, and teal." />
+          </div>
+          <div className="plate plate-detail">
+            <img src={gallery03} alt="Close detail of layered paper and paint texture." />
+          </div>
+          <div className="plate plate-small">
+            <img src={gallery02} alt="Hands working with paint during an art session." />
+          </div>
+          <Motif id="sputnik-color" className="plate-pin plate-pin-a" />
+          <Motif id="sparkle-four" className="plate-pin plate-pin-b" />
         </div>
-        <div className="plate plate-detail">
-          <img src={gallery03} alt="Close detail of layered paper and paint texture." />
-        </div>
-        <div className="plate plate-small">
-          <img src={gallery02} alt="Hands working with paint during an art session." />
-        </div>
-        <Motif id="sputnik-color" className="plate-pin plate-pin-a" />
-        <Motif id="sparkle-four" className="plate-pin plate-pin-b" />
       </div>
     </section>
   );
@@ -257,24 +261,26 @@ function Benefits() {
     <section className="benefits" id="benefits">
       <WideMotif id="swoosh" className="benefits-swoosh" />
       <Motif id="starburst" className="benefits-burst" />
-      <div className="benefits-copy">
-        <h2>
-          The transformative power of <em>art.</em>
-        </h2>
-        <p>
-          Art therapy isn&apos;t just about making things - it&apos;s about healing. Creative expression is profoundly
-          impactful for managing anxiety, depression, PTSD, chronic illness, and trauma.
-        </p>
+      <div className="benefits-inner">
+        <div className="benefits-copy">
+          <h2>
+            The transformative power of <em>art.</em>
+          </h2>
+          <p>
+            Art therapy isn&apos;t just about making things - it&apos;s about healing. Creative expression is profoundly
+            impactful for managing anxiety, depression, PTSD, chronic illness, and trauma.
+          </p>
+        </div>
+        <ul className="benefits-grid">
+          {benefits.map((benefit) => (
+            <li className="benefit" key={benefit.title}>
+              <Motif id={benefit.icon} className="benefit-icon" />
+              <h3>{benefit.title}</h3>
+              <p>{benefit.body}</p>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className="benefits-grid">
-        {benefits.map((benefit) => (
-          <li className="benefit" key={benefit.title}>
-            <Motif id={benefit.icon} className="benefit-icon" />
-            <h3>{benefit.title}</h3>
-            <p>{benefit.body}</p>
-          </li>
-        ))}
-      </ul>
     </section>
   );
 }
@@ -282,29 +288,31 @@ function Benefits() {
 function AboutRandi() {
   return (
     <section className="about-randi" id="randi">
-      <div className="portrait-plate">
-        <img src={randiProfileUrl} alt="Randi Yaffa." />
-        <Motif id="sputnik-color" className="portrait-mark" />
-      </div>
-      <div className="randi-copy">
-        <h2>
-          Meet <em>Randi Yaffa</em>
-        </h2>
-        <p className="role-line credential-line">D-TATI, Registered Psychotherapist (Qualifying)</p>
-        <p className="role-line">Art therapist - storyteller - limitless creative</p>
-        <p>
-          I&apos;m Randi, a qualified art therapist (Toronto Art Therapy Institute) with a BAA in film and photography.
-        </p>
-        <p>
-          Before transitioning into art therapy, I spent my career telling stories as a world-class,
-          award-winning film and television producer. With a D-TATI, I combine story, material, and care to help
-          people make meaning through art.
-        </p>
-        <p>
-          Today, I use that same passion for creative expression to help individuals and groups tell their own
-          stories and heal through art.
-        </p>
-        <div className="signature">- Randi Yaffa</div>
+      <div className="about-randi-inner">
+        <div className="portrait-plate">
+          <img src={randiProfileUrl} alt="Randi Yaffa." />
+          <Motif id="sputnik-color" className="portrait-mark" />
+        </div>
+        <div className="randi-copy">
+          <h2>
+            Meet <em>Randi Yaffa</em>
+          </h2>
+          <p className="role-line credential-line">D-TATI, Registered Psychotherapist (Qualifying)</p>
+          <p className="role-line">Art therapist - storyteller - limitless creative</p>
+          <p>
+            I&apos;m Randi, a qualified art therapist (Toronto Art Therapy Institute) with a BAA in film and photography.
+          </p>
+          <p>
+            Before transitioning into art therapy, I spent my career telling stories as a world-class,
+            award-winning film and television producer. With a D-TATI, I combine story, material, and care to help
+            people make meaning through art.
+          </p>
+          <p>
+            Today, I use that same passion for creative expression to help individuals and groups tell their own
+            stories and heal through art.
+          </p>
+          <div className="signature">- Randi Yaffa</div>
+        </div>
       </div>
     </section>
   );
