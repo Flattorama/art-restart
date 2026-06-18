@@ -1,13 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
 
 import randiPortrait from "@/assets/randi-portrait.jpg";
 import gallery01 from "@/assets/gallery-01.jpg";
 import gallery02 from "@/assets/gallery-02.jpg";
 import gallery03 from "@/assets/gallery-03.jpg";
-import gallery04 from "@/assets/gallery-04.jpg";
-import gallery05 from "@/assets/gallery-05.jpg";
-import gallery06 from "@/assets/gallery-06.jpg";
 
 export const Route = createFileRoute("/")({
   component: ArtRestartHome,
@@ -16,6 +13,45 @@ export const Route = createFileRoute("/")({
 const BASE = import.meta.env.BASE_URL;
 const doodle = (id: string) => `${BASE}brand/doodles.svg#${id}`;
 const logoUrl = `${BASE}brand/logo.svg`;
+const galleryPhotoFiles = [
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (1).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (2).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (3).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (4).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (5).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (6).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (7).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (8).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM (9).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.40 AM.jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM (1).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM (2).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM (3).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM (4).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM (5).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM (6).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM (7).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM (8).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.41 AM.jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (1).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (10).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (11).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (12).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (13).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (2).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (3).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (4).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (5).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (6).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (7).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (8).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (9).jpeg",
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM.jpeg",
+] as const;
+const galleryPhotos = galleryPhotoFiles.map((fileName, index) => ({
+  src: `${BASE}gallery/${encodeURIComponent(fileName)}`,
+  alt: `Art Restart gallery image ${index + 1} of ${galleryPhotoFiles.length}`,
+}));
 
 function Motif({ id, className }: { id: string; className?: string }) {
   return (
@@ -283,7 +319,113 @@ function AboutRandi() {
   );
 }
 
+function GalleryLightbox({
+  open,
+  currentIndex,
+  onClose,
+  onSelect,
+}: {
+  open: boolean;
+  currentIndex: number;
+  onClose: () => void;
+  onSelect: (index: number) => void;
+}) {
+  const touchStartX = useRef<number | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const currentPhoto = galleryPhotos[currentIndex];
+  const goToPrevious = () => onSelect((currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length);
+  const goToNext = () => onSelect((currentIndex + 1) % galleryPhotos.length);
+
+  useEffect(() => {
+    if (open) closeButtonRef.current?.focus();
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        onSelect((currentIndex - 1 + galleryPhotos.length) % galleryPhotos.length);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        onSelect((currentIndex + 1) % galleryPhotos.length);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [currentIndex, onClose, onSelect, open]);
+
+  if (!open) return null;
+
+  const onTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
+
+    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+
+    if (Math.abs(deltaX) < 50) return;
+    if (deltaX > 0) {
+      goToPrevious();
+    } else {
+      goToNext();
+    }
+  };
+
+  return (
+    <div className="gallery-lightbox-backdrop" onClick={onClose}>
+      <div
+        className="gallery-lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Art Restart photo gallery"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button ref={closeButtonRef} className="gallery-lightbox-close" onClick={onClose} aria-label="Close gallery">
+          x
+        </button>
+        <button className="gallery-lightbox-arrow previous" onClick={goToPrevious} aria-label="Previous photo">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <div
+          className="gallery-lightbox-stage"
+          onTouchStart={(event) => {
+            touchStartX.current = event.touches[0].clientX;
+          }}
+          onTouchEnd={onTouchEnd}
+        >
+          <img src={currentPhoto.src} alt={currentPhoto.alt} />
+        </div>
+        <button className="gallery-lightbox-arrow next" onClick={goToNext} aria-label="Next photo">
+          <span aria-hidden="true">›</span>
+        </button>
+        <div className="gallery-lightbox-count" aria-live="polite">
+          {currentIndex + 1} / {galleryPhotos.length}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Community() {
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [activePhoto, setActivePhoto] = useState(0);
+  const previewPhotos = galleryPhotos.slice(0, 3);
+  const openGallery = (index: number) => {
+    setActivePhoto(index);
+    setGalleryOpen(true);
+  };
+
   return (
     <section className="community" id="community">
       <Motif id="sparkle-slim" className="community-sparkle" />
@@ -313,14 +455,29 @@ function Community() {
         <article className="gallery-card">
           <div className="fig">The gallery</div>
           <div className="gallery-strip">
-            <img src={gallery04} alt="" />
-            <img src={gallery05} alt="" />
-            <img src={gallery06} alt="" />
+            {previewPhotos.map((photo, index) => (
+              <button
+                className="gallery-thumb"
+                key={photo.src}
+                onClick={() => openGallery(index)}
+                aria-label={`Open gallery at photo ${index + 1}`}
+              >
+                <img src={photo.src} alt={photo.alt} />
+              </button>
+            ))}
           </div>
           <p>A celebration of expression - beautiful, messy, meaningful work shared with permission.</p>
-          <a href="#community">View the gallery →</a>
+          <button className="gallery-action" onClick={() => openGallery(0)}>
+            View the gallery <span aria-hidden="true">→</span>
+          </button>
         </article>
       </div>
+      <GalleryLightbox
+        open={galleryOpen}
+        currentIndex={activePhoto}
+        onClose={() => setGalleryOpen(false)}
+        onSelect={setActivePhoto}
+      />
     </section>
   );
 }
