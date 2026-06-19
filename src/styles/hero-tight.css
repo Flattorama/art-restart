@@ -12,13 +12,14 @@
   }
 
   .brand {
-    width: 94px;
+    height: 60px;
+    width: 70px;
   }
 
   .brand img {
-    height: 56px;
+    height: auto;
     object-fit: contain;
-    width: 56px;
+    width: 100%;
   }
 
   .hero {
@@ -210,10 +211,15 @@
 }
 
 @media (max-width: 900px) {
+  .brand {
+    height: 58px;
+    width: 68px;
+  }
+
   .brand img {
-    height: 54px;
+    height: auto;
     object-fit: contain;
-    width: 54px;
+    width: 100%;
   }
 }
 
