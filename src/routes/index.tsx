@@ -7,7 +7,7 @@ export const Route = createFileRoute("/")({
 
 const BASE = import.meta.env.BASE_URL;
 const doodle = (id: string) => `${BASE}brand/doodles.svg#${id}`;
-const logoUrl = `${BASE}brand/logo.svg`;
+const logoUrl = `${BASE}brand/${encodeURIComponent("Art Restart.png")}`;
 const publicGalleryUrl = (fileName: string) => `${BASE}gallery/${encodeURIComponent(fileName)}`;
 const randiProfileUrl = `${BASE}gallery/${encodeURIComponent("Randi Profile Picture.jpeg")}`;
 const heroArtwork = {
