@@ -11,9 +11,9 @@ const logoUrl = `${BASE}brand/logo.svg`;
 const publicGalleryUrl = (fileName: string) => `${BASE}gallery/${encodeURIComponent(fileName)}`;
 const randiProfileUrl = `${BASE}gallery/${encodeURIComponent("Randi Profile Picture.jpeg")}`;
 const heroArtwork = {
-  portrait: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (1).jpeg"),
-  landscape: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.41 AM (4).jpeg"),
-  mandala: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (2).jpeg"),
+  portrait: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (10).jpeg"),
+  landscape: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (4).jpeg"),
+  mandala: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (8).jpeg"),
 };
 const galleryPhotoFiles = [
   "WhatsApp Image 2026-06-18 at 10.40.40 AM (1).jpeg",
@@ -177,13 +177,13 @@ function Hero({ onBook }: { onBook: () => void }) {
 
         <div className="hero-art" aria-label="Art materials and painted textures">
           <div className="plate plate-main">
-            <img src={heroArtwork.portrait} alt="Colorful portrait artwork with a stylized face and heart." />
+            <img src={heroArtwork.portrait} alt="Line artwork of two expressive faces with blue eyes and red lips." />
           </div>
           <div className="plate plate-detail">
-            <img src={heroArtwork.mandala} alt="Circular mandala artwork in bright watercolor colors." />
+            <img src={heroArtwork.mandala} alt="Abstract watercolor artwork with vivid blue, green, red, and purple washes." />
           </div>
           <div className="plate plate-small">
-            <img src={heroArtwork.landscape} alt="Watercolor artwork with figures, sky, and expressive color." />
+            <img src={heroArtwork.landscape} alt="Large red abstract painting with sweeping brushstrokes and a white hand." />
           </div>
           <Motif id="sputnik-color" className="plate-pin plate-pin-a" />
           <Motif id="sparkle-four" className="plate-pin plate-pin-b" />
@@ -485,7 +485,7 @@ function Community() {
           <div className="gallery-strip">
             {previewPhotos.map((photo, index) => (
               <button
-                className="gallery-thumb"
+                className={`gallery-thumb gallery-thumb-${index + 1}`}
                 key={photo.src}
                 onClick={() => openGallery(index)}
                 aria-label={`Open gallery at photo ${index + 1}`}
@@ -527,15 +527,11 @@ function FinalFooter({ onBook }: { onBook: () => void }) {
       <div className="footer-meta">
         <div>
           <span>Email</span>
-          <strong>hello@artrestart.studio</strong>
-        </div>
-        <div>
-          <span>Phone</span>
-          <strong>+1 (416) 000-0000</strong>
+          <strong>artrestarthq@gmail.com</strong>
         </div>
         <div>
           <span>Instagram</span>
-          <strong>@artrestartstudio</strong>
+          <strong>@art_restart1</strong>
         </div>
       </div>
       <div className="footer-tiny">
