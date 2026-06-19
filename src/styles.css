@@ -208,21 +208,21 @@ ul {
     linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(252, 249, 240, 0.96)),
     var(--surface);
   border: 1.5px solid rgba(44, 44, 44, 0.22);
-  border-radius: 3px 9px 7px 4px;
+  border-radius: 4px 10px 8px 5px;
   box-shadow:
     5px 6px 0 rgba(44, 44, 44, 0.12),
     0 12px 22px rgba(44, 44, 44, 0.12);
   display: inline-flex;
-  height: 68px;
+  height: 58px;
   justify-content: center;
-  padding: 7px;
+  padding: 8px 14px;
   position: relative;
   transform: rotate(-2.5deg);
   transform-origin: 50% 0;
   transition:
     box-shadow var(--t-fast) var(--ease-pop),
     transform var(--t-fast) var(--ease-pop);
-  width: 78px;
+  width: 184px;
 }
 
 .brand::before {
@@ -234,7 +234,7 @@ ul {
   box-shadow: 1px 2px 0 rgba(44, 44, 44, 0.18);
   content: "";
   height: 16px;
-  left: 50%;
+  left: 22%;
   position: absolute;
   top: -10px;
   transform: translateX(-50%) rotate(7deg);
@@ -248,7 +248,7 @@ ul {
   content: "";
   height: 14px;
   position: absolute;
-  right: 8px;
+  right: 14px;
   transform: skew(-18deg);
   width: 18px;
   z-index: -1;
@@ -560,18 +560,61 @@ ul {
 
 .mission {
   background: var(--surface);
-  min-height: 340px;
+  min-height: 360px;
   overflow: hidden;
   padding: clamp(70px, 8vw, 110px) clamp(20px, 5vw, 80px);
   position: relative;
-  text-align: center;
 }
 
 .mission-inner {
+  align-items: center;
+  display: grid;
+  gap: clamp(30px, 5vw, 72px);
+  grid-template-columns: minmax(210px, 0.45fr) minmax(0, 1fr);
   margin: 0 auto;
-  max-width: 780px;
+  max-width: 1080px;
   position: relative;
   z-index: 3;
+}
+
+.mission-logo-card {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(252, 249, 240, 0.94)),
+    var(--surface);
+  border: 1.5px solid rgba(44, 44, 44, 0.24);
+  border-radius: 12px;
+  box-shadow: var(--shadow-small);
+  justify-self: center;
+  max-width: 260px;
+  padding: clamp(12px, 2vw, 18px);
+  position: relative;
+  transform: rotate(-3deg);
+  width: min(100%, 260px);
+}
+
+.mission-logo-card::before {
+  background: var(--yellow);
+  border: 1.5px solid rgba(44, 44, 44, 0.28);
+  border-radius: 999px;
+  box-shadow: 1px 2px 0 rgba(44, 44, 44, 0.16);
+  content: "";
+  height: 18px;
+  left: 50%;
+  position: absolute;
+  top: -11px;
+  transform: translateX(-50%) rotate(5deg);
+  width: 56px;
+}
+
+.mission-logo-card img {
+  border-radius: 8px;
+  height: auto;
+  width: 100%;
+}
+
+.mission-copy {
+  max-width: 780px;
+  text-align: center;
 }
 
 .mission h2 {
@@ -1338,8 +1381,9 @@ ul {
   }
 
   .brand {
-    height: 62px;
-    width: 72px;
+    height: 54px;
+    padding: 8px 12px;
+    width: 166px;
   }
 
   .brand img {
@@ -1377,9 +1421,21 @@ ul {
   .section-head,
   .service-grid,
   .about-randi-inner,
+  .mission-inner,
   .community-grid,
   .footer-meta {
     grid-template-columns: 1fr;
+  }
+
+  .mission-inner {
+    max-width: 780px;
+    text-align: center;
+  }
+
+  .mission-logo-card {
+    max-width: 220px;
+    order: -1;
+    width: min(72vw, 220px);
   }
 
   .service-card {
