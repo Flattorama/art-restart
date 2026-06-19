@@ -12,8 +12,8 @@
   }
 
   .brand {
-    height: 60px;
-    width: 70px;
+    height: 50px;
+    width: 168px;
   }
 
   .brand img {
@@ -212,8 +212,8 @@
 
 @media (max-width: 900px) {
   .brand {
-    height: 58px;
-    width: 68px;
+    height: 52px;
+    width: 158px;
   }
 
   .brand img {

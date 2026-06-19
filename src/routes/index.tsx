@@ -7,8 +7,9 @@ export const Route = createFileRoute("/")({
 
 const BASE = import.meta.env.BASE_URL;
 const doodle = (id: string) => `${BASE}brand/doodles.svg#${id}`;
-const logoUrl = `${BASE}brand/${encodeURIComponent("Art Restart.png")}`;
+const logoUrl = `${BASE}brand/${encodeURIComponent("Art Restart Wordmark.png")}`;
 const publicGalleryUrl = (fileName: string) => `${BASE}gallery/${encodeURIComponent(fileName)}`;
+const missionLogoUrl = publicGalleryUrl("Art Restart Logo.png");
 const randiProfileUrl = `${BASE}gallery/${encodeURIComponent("Randi Profile Picture.jpeg")}`;
 const heroArtwork = {
   portrait: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (10).jpeg"),
@@ -199,15 +200,20 @@ function AboutMission() {
       <Motif id="sparkle-four" className="mission-motif mission-motif-a" />
       <Motif id="starburst" className="mission-motif mission-motif-b" />
       <div className="mission-inner">
-        <h2>
-          Art is for <em>everyone.</em>
-        </h2>
-        <p className="mission-sub">Kids, teens, adults, and seniors - you belong here.</p>
-        <p>
-          Nervous about your art skills? If you only know how to scribble, can&apos;t hold a tune to save your
-          life, constantly trip while dancing, or consider drawing stick figures your peak artistic achievement -
-          perfect. Art Restart is a nurturing environment focused on empowerment and expression, not perfection.
-        </p>
+        <div className="mission-logo-card">
+          <img src={missionLogoUrl} alt="Hand-drawn Art Restart logo with a colorful restart arrow." />
+        </div>
+        <div className="mission-copy">
+          <h2>
+            Art is for <em>everyone.</em>
+          </h2>
+          <p className="mission-sub">Kids, teens, adults, and seniors - you belong here.</p>
+          <p>
+            Nervous about your art skills? If you only know how to scribble, can&apos;t hold a tune to save your
+            life, constantly trip while dancing, or consider drawing stick figures your peak artistic achievement -
+            perfect. Art Restart is a nurturing environment focused on empowerment and expression, not perfection.
+          </p>
+        </div>
       </div>
     </section>
   );
