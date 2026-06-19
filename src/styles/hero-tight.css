@@ -100,40 +100,45 @@
 
   .plate-main {
     height: 70%;
-    left: 13%;
-    top: 7%;
-    transform: rotate(-4.5deg);
-    width: 58%;
+    left: 5%;
+    top: 6%;
+    transform: translate3d(calc(var(--hero-scroll, 0) * -12px), calc(var(--hero-scroll, 0) * -8px), 0)
+      rotate(calc(-2.5deg + (var(--hero-scroll, 0) * -2.8deg)));
+    width: 42%;
   }
 
   .plate-detail {
-    height: 41%;
-    left: 58%;
+    height: 38%;
+    left: 10%;
     right: auto;
-    top: 42%;
-    transform: rotate(5deg);
-    width: 35%;
+    top: 58%;
+    transform: translate3d(calc(var(--hero-scroll, 0) * -16px), calc(var(--hero-scroll, 0) * 18px), 0)
+      rotate(calc(-1deg + (var(--hero-scroll, 0) * -3.5deg)));
+    width: 38%;
   }
 
   .plate-small {
-    bottom: 8%;
-    height: 33%;
-    left: 7%;
-    width: 39%;
+    bottom: auto;
+    height: 38%;
+    left: 38%;
+    top: 30%;
+    transform: translate3d(calc(var(--hero-scroll, 0) * 18px), calc(var(--hero-scroll, 0) * -4px), 0)
+      rotate(calc(2.5deg + (var(--hero-scroll, 0) * 2.8deg)));
+    width: 55%;
   }
 
   .plate-pin-a {
     height: 66px;
-    left: 9%;
-    top: 70%;
+    left: 7%;
+    top: 58%;
     width: 66px;
   }
 
   .plate-pin-b {
     color: var(--teal-dark);
     height: 58px;
-    left: 66%;
-    top: 34%;
+    left: 43%;
+    top: 42%;
     width: 58px;
   }
 

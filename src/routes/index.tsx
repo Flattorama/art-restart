@@ -1,10 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type TouchEvent } from "react";
 
-import gallery01 from "@/assets/gallery-01.jpg";
-import gallery02 from "@/assets/gallery-02.jpg";
-import gallery03 from "@/assets/gallery-03.jpg";
-
 export const Route = createFileRoute("/")({
   component: ArtRestartHome,
 });
@@ -12,7 +8,13 @@ export const Route = createFileRoute("/")({
 const BASE = import.meta.env.BASE_URL;
 const doodle = (id: string) => `${BASE}brand/doodles.svg#${id}`;
 const logoUrl = `${BASE}brand/logo.svg`;
+const publicGalleryUrl = (fileName: string) => `${BASE}gallery/${encodeURIComponent(fileName)}`;
 const randiProfileUrl = `${BASE}gallery/${encodeURIComponent("Randi Profile Picture.jpeg")}`;
+const heroArtwork = {
+  portrait: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (1).jpeg"),
+  landscape: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.41 AM (4).jpeg"),
+  mandala: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (2).jpeg"),
+};
 const galleryPhotoFiles = [
   "WhatsApp Image 2026-06-18 at 10.40.40 AM (1).jpeg",
   "WhatsApp Image 2026-06-18 at 10.40.40 AM (2).jpeg",
@@ -49,7 +51,7 @@ const galleryPhotoFiles = [
   "WhatsApp Image 2026-06-18 at 10.40.42 AM.jpeg",
 ] as const;
 const galleryPhotos = galleryPhotoFiles.map((fileName, index) => ({
-  src: `${BASE}gallery/${encodeURIComponent(fileName)}`,
+  src: publicGalleryUrl(fileName),
   alt: `Art Restart gallery image ${index + 1} of ${galleryPhotoFiles.length}`,
 }));
 
@@ -113,8 +115,38 @@ function TopBar({ onBook }: { onBook: () => void }) {
 }
 
 function Hero({ onBook }: { onBook: () => void }) {
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let frame = 0;
+    const updateScrollProgress = () => {
+      frame = 0;
+      const rect = hero.getBoundingClientRect();
+      const range = Math.max(1, rect.height * 0.62);
+      const progress = Math.min(1, Math.max(0, -rect.top / range));
+      hero.style.setProperty("--hero-scroll", progress.toFixed(3));
+    };
+    const requestUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateScrollProgress);
+    };
+
+    updateScrollProgress();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      hero.style.removeProperty("--hero-scroll");
+    };
+  }, []);
+
   return (
-    <section className="hero" id="top">
+    <section className="hero" id="top" ref={heroRef}>
       <Motif id="sparkle-slim" className="hero-motif hero-motif-a" />
       <Motif id="starburst" className="hero-motif hero-motif-b" />
       <Motif id="sputnik" className="hero-motif hero-motif-c" />
@@ -145,13 +177,13 @@ function Hero({ onBook }: { onBook: () => void }) {
 
         <div className="hero-art" aria-label="Art materials and painted textures">
           <div className="plate plate-main">
-            <img src={gallery01} alt="Bright abstract paint strokes in orange, yellow, and teal." />
+            <img src={heroArtwork.portrait} alt="Colorful portrait artwork with a stylized face and heart." />
           </div>
           <div className="plate plate-detail">
-            <img src={gallery03} alt="Close detail of layered paper and paint texture." />
+            <img src={heroArtwork.mandala} alt="Circular mandala artwork in bright watercolor colors." />
           </div>
           <div className="plate plate-small">
-            <img src={gallery02} alt="Hands working with paint during an art session." />
+            <img src={heroArtwork.landscape} alt="Watercolor artwork with figures, sky, and expressive color." />
           </div>
           <Motif id="sputnik-color" className="plate-pin plate-pin-a" />
           <Motif id="sparkle-four" className="plate-pin plate-pin-b" />

@@ -294,6 +294,7 @@ ul {
 }
 
 .hero {
+  --hero-scroll: 0;
   background:
     radial-gradient(circle at 88% 12%, rgba(255, 235, 59, 0.36), transparent 18%),
     linear-gradient(145deg, rgba(234, 217, 236, 0.96), rgba(234, 217, 236, 0.72) 54%, rgba(178, 223, 219, 0.45) 54%),
@@ -382,37 +383,54 @@ ul {
   width: 100%;
 }
 
+.plate-main img {
+  object-position: 50% 44%;
+}
+
+.plate-detail img {
+  object-position: 50% 50%;
+}
+
+.plate-small img {
+  object-position: 48% 48%;
+}
+
 .plate-main {
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow: var(--shadow-atomic);
   height: 72%;
-  left: 9%;
-  top: 2%;
-  transform: rotate(-5deg);
-  width: 56%;
+  left: 5%;
+  top: 4%;
+  transform: translate3d(calc(var(--hero-scroll, 0) * -10px), calc(var(--hero-scroll, 0) * -8px), 0)
+    rotate(calc(-3.5deg + (var(--hero-scroll, 0) * -2.2deg)));
+  width: 42%;
   z-index: 2;
 }
 
 .plate-detail {
   border-radius: 50%;
   box-shadow: 5px 5px 0 var(--ink);
-  height: 42%;
-  right: 6%;
-  top: 35%;
-  transform: rotate(6deg);
-  width: 42%;
-  z-index: 3;
+  height: 40%;
+  left: 11%;
+  right: auto;
+  top: 58%;
+  transform: translate3d(calc(var(--hero-scroll, 0) * -12px), calc(var(--hero-scroll, 0) * 16px), 0)
+    rotate(calc(-1deg + (var(--hero-scroll, 0) * -3deg)));
+  width: 40%;
+  z-index: 4;
 }
 
 .plate-small {
-  border-radius: 12px;
-  bottom: 8%;
+  border-radius: 14px;
+  bottom: auto;
   box-shadow: var(--shadow-teal);
-  height: 32%;
-  left: 0;
-  transform: rotate(4deg);
-  width: 38%;
-  z-index: 1;
+  height: 38%;
+  left: 39%;
+  top: 30%;
+  transform: translate3d(calc(var(--hero-scroll, 0) * 14px), calc(var(--hero-scroll, 0) * -2px), 0)
+    rotate(calc(3deg + (var(--hero-scroll, 0) * 2.5deg)));
+  width: 54%;
+  z-index: 3;
 }
 
 .hero-motif,
@@ -1335,21 +1353,29 @@ ul {
   }
 
   .plate-main {
-    height: 67%;
-    left: 6%;
-    width: 64%;
+    height: 70%;
+    left: 5%;
+    top: 3%;
+    transform: rotate(-3.5deg);
+    width: 43%;
   }
 
   .plate-detail {
-    height: 42%;
-    right: 0;
-    width: 42%;
+    height: 39%;
+    left: 9%;
+    right: auto;
+    top: 57%;
+    transform: rotate(-1deg);
+    width: 39%;
   }
 
   .plate-small {
-    bottom: 3%;
-    height: 30%;
-    width: 42%;
+    bottom: auto;
+    height: 38%;
+    left: 38%;
+    top: 30%;
+    transform: rotate(3deg);
+    width: 56%;
   }
 
   .hero-motif-b,
@@ -1432,5 +1458,17 @@ ul {
   .nav-cta:hover,
   .service-card:hover {
     transform: none;
+  }
+
+  .plate-main {
+    transform: rotate(-3.5deg);
+  }
+
+  .plate-detail {
+    transform: rotate(-1deg);
+  }
+
+  .plate-small {
+    transform: rotate(3deg);
   }
 }
