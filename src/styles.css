@@ -373,8 +373,8 @@ ul {
 
 .hero-art {
   align-self: center;
-  aspect-ratio: 1.04;
-  min-height: 500px;
+  aspect-ratio: 1 / 1;
+  min-height: 420px;
   position: relative;
   z-index: 4;
 }
@@ -408,12 +408,12 @@ ul {
 .plate-main {
   border-radius: 16px;
   box-shadow: var(--shadow-atomic);
-  height: 72%;
-  left: 5%;
+  height: 84%;
+  left: 8%;
   top: 4%;
   transform: translate3d(calc(var(--hero-scroll, 0) * -10px), calc(var(--hero-scroll, 0) * -8px), 0)
     rotate(calc(-3.5deg + (var(--hero-scroll, 0) * -2.2deg)));
-  width: 42%;
+  width: 76%;
   z-index: 6;
 }
 
@@ -1392,33 +1392,15 @@ ul {
   }
 
   .hero-art {
-    min-height: 330px;
+    min-height: 300px;
   }
 
   .plate-main {
-    height: 70%;
-    left: 5%;
+    height: 88%;
+    left: 6%;
     top: 3%;
     transform: rotate(-3.5deg);
-    width: 43%;
-  }
-
-  .plate-detail {
-    height: 39%;
-    left: 9%;
-    right: auto;
-    top: 57%;
-    transform: rotate(-1deg);
-    width: 39%;
-  }
-
-  .plate-small {
-    bottom: auto;
-    height: 38%;
-    left: 38%;
-    top: 30%;
-    transform: rotate(3deg);
-    width: 56%;
+    width: 88%;
   }
 
   .hero-motif-b,
@@ -1434,6 +1416,28 @@ ul {
     bottom: 1%;
     opacity: 0.9;
     width: 160px;
+  }
+
+  .footer-motif-a {
+    height: 76px;
+    left: auto;
+    right: 12px;
+    top: 16px;
+    width: 76px;
+  }
+
+  .footer-swoosh {
+    bottom: 12px;
+    right: 8px;
+    width: 168px;
+  }
+
+  .final-inner {
+    padding-right: 18px;
+  }
+
+  .footer-meta {
+    margin-top: 34px;
   }
 
   .benefits-grid {
