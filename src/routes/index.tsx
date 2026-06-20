@@ -15,8 +15,6 @@ const publicGalleryUrl = (fileName: string) => `${BASE}gallery/${encodeURICompon
 const randiProfileUrl = `${BASE}gallery/${encodeURIComponent("Randi Profile Picture.jpeg")}`;
 const heroArtwork = {
   portrait: brandArtworkUrl,
-  landscape: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (4).jpeg"),
-  mandala: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (8).jpeg"),
 };
 const galleryPhotoFiles = [
   "WhatsApp Image 2026-06-18 at 10.40.40 AM (1).jpeg",
@@ -172,7 +170,7 @@ function Hero({ onBook }: { onBook: () => void }) {
             <em>Art Restart.</em>
           </h1>
           <p className="hero-kicker">
-            Where <em>creativity</em> meets <strong>healing</strong>, and stuck figures are gently encouraged.
+            Where <em>creativity</em> meets <strong>healing</strong>, and stick figures are gently encouraged.
           </p>
           <p className="hero-lede">
             Whether you&apos;re seeking a creative therapeutic outlet to escape life&apos;s daily stresses, or an
@@ -192,14 +190,6 @@ function Hero({ onBook }: { onBook: () => void }) {
           <div className="plate plate-main">
             <img src={heroArtwork.portrait} alt="Hand-drawn Art Restart logo with a colorful restart arrow." />
           </div>
-          <div className="plate plate-detail">
-            <img src={heroArtwork.mandala} alt="Abstract watercolor artwork with vivid blue, green, red, and purple washes." />
-          </div>
-          <div className="plate plate-small">
-            <img src={heroArtwork.landscape} alt="Large red abstract painting with sweeping brushstrokes and a white hand." />
-          </div>
-          <Motif id="sputnik-color" className="plate-pin plate-pin-a" />
-          <Motif id="sparkle-four" className="plate-pin plate-pin-b" />
         </div>
       </div>
     </section>
@@ -483,7 +473,7 @@ function Community() {
             Community &amp; <em>updates.</em>
           </h2>
         </div>
-        <p>News from the studio, and a window into the work being made here.</p>
+        <p>News from our community and a glimpse of the art being created.</p>
       </div>
 
       <div className="community-grid">
@@ -495,7 +485,6 @@ function Community() {
             Stay tuned for updates on upcoming journaling pop-ups, studio expansion news, and short reads on
             wellness and creativity.
           </p>
-          <a href="#community">Read the latest →</a>
         </article>
 
         <article className="gallery-card">
@@ -511,7 +500,7 @@ function Community() {
               </button>
             ))}
           </div>
-          <p>A celebration of expression - beautiful, messy, meaningful work shared with permission.</p>
+          <p>A celebration of expression - beautiful, messy, meaningful work.</p>
           <button className="gallery-action" onClick={() => openGallery(0)}>
             View the gallery <span aria-hidden="true">→</span>
           </button>

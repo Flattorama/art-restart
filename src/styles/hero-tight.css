@@ -100,48 +100,13 @@
   }
 
   .plate-main {
-    height: 70%;
-    left: 5%;
-    top: 6%;
+    height: 84%;
+    left: 8%;
+    top: 4%;
     transform: translate3d(calc(var(--hero-scroll, 0) * -12px), calc(var(--hero-scroll, 0) * -8px), 0)
       rotate(calc(-2.5deg + (var(--hero-scroll, 0) * -2.8deg)));
-    width: 42%;
+    width: 76%;
     z-index: 6;
-  }
-
-  .plate-detail {
-    height: 38%;
-    left: 10%;
-    right: auto;
-    top: 58%;
-    transform: translate3d(calc(var(--hero-scroll, 0) * -16px), calc(var(--hero-scroll, 0) * 18px), 0)
-      rotate(calc(-1deg + (var(--hero-scroll, 0) * -3.5deg)));
-    width: 38%;
-  }
-
-  .plate-small {
-    bottom: auto;
-    height: 38%;
-    left: 38%;
-    top: 30%;
-    transform: translate3d(calc(var(--hero-scroll, 0) * 18px), calc(var(--hero-scroll, 0) * -4px), 0)
-      rotate(calc(2.5deg + (var(--hero-scroll, 0) * 2.8deg)));
-    width: 55%;
-  }
-
-  .plate-pin-a {
-    height: 66px;
-    left: 7%;
-    top: 58%;
-    width: 66px;
-  }
-
-  .plate-pin-b {
-    color: var(--teal-dark);
-    height: 58px;
-    left: 43%;
-    top: 42%;
-    width: 58px;
   }
 
   .hero-motif-a {
@@ -202,7 +167,7 @@
   .hero-art {
     grid-column: 1;
     grid-row: 2;
-    height: 430px;
+    height: 380px;
     justify-self: center;
     margin: 0 auto;
     min-height: 0;
@@ -243,9 +208,17 @@
   }
 
   .hero-art {
-    height: 285px;
+    height: 300px;
     min-height: 0;
     transform: translateY(-12px);
+  }
+
+  .plate-main {
+    height: 88%;
+    left: 6%;
+    top: 3%;
+    transform: rotate(-3.5deg);
+    width: 88%;
   }
 
   .hero-motif-a,
