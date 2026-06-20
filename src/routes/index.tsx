@@ -344,8 +344,8 @@ function AboutRandi() {
           </p>
           <p>
             Before transitioning into art therapy, I spent my career telling stories as a world-class,
-            award-winning film and television producer. With a D-TATI, I combine story, material, and care to help
-            people make meaning through art.
+            award-winning film and television producer. With art, I combine story, material, and care to help people
+            make meaning.
           </p>
           <p>
             Today, I use that same passion for creative expression to help individuals and groups tell their own
