@@ -544,11 +544,13 @@ function FinalFooter() {
       <div className="footer-meta">
         <div>
           <span>Email</span>
-          <strong>artrestarthq@gmail.com</strong>
+          <a href={contactMailto}>artrestarthq@gmail.com</a>
         </div>
         <div>
           <span>Instagram</span>
-          <strong>@art_restart1</strong>
+          <a href="https://www.instagram.com/art_restart1" target="_blank" rel="noreferrer">
+            @art_restart1
+          </a>
         </div>
       </div>
       <div className="footer-tiny">
