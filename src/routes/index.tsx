@@ -7,12 +7,14 @@ export const Route = createFileRoute("/")({
 
 const BASE = import.meta.env.BASE_URL;
 const doodle = (id: string) => `${BASE}brand/doodles.svg#${id}`;
-const logoUrl = `${BASE}brand/${encodeURIComponent("Art Restart Wordmark 2.png")}`;
+const contactEmail = "artrestarthq@gmail.com";
+const contactMailto = `mailto:${contactEmail}`;
+const logoUrl = `${BASE}brand/${encodeURIComponent("Art Restart Wordmark.png")}`;
+const brandArtworkUrl = `${BASE}brand/${encodeURIComponent("Art Restart Logo.png")}`;
 const publicGalleryUrl = (fileName: string) => `${BASE}gallery/${encodeURIComponent(fileName)}`;
-const missionLogoUrl = publicGalleryUrl("Art Restart Logo.png");
 const randiProfileUrl = `${BASE}gallery/${encodeURIComponent("Randi Profile Picture.jpeg")}`;
 const heroArtwork = {
-  portrait: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (10).jpeg"),
+  portrait: brandArtworkUrl,
   landscape: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (4).jpeg"),
   mandala: publicGalleryUrl("WhatsApp Image 2026-06-18 at 10.40.42 AM (8).jpeg"),
 };
@@ -50,11 +52,21 @@ const galleryPhotoFiles = [
   "WhatsApp Image 2026-06-18 at 10.40.42 AM (8).jpeg",
   "WhatsApp Image 2026-06-18 at 10.40.42 AM (9).jpeg",
   "WhatsApp Image 2026-06-18 at 10.40.42 AM.jpeg",
+  "WhatsApp Image 2026-06-19 at 7.15.55 PM.jpeg",
 ] as const;
 const galleryPhotos = galleryPhotoFiles.map((fileName, index) => ({
   src: publicGalleryUrl(fileName),
   alt: `Art Restart gallery image ${index + 1} of ${galleryPhotoFiles.length}`,
 }));
+const galleryPreviewFiles = [
+  galleryPhotoFiles[0],
+  "WhatsApp Image 2026-06-18 at 10.40.42 AM (1).jpeg",
+  "WhatsApp Image 2026-06-19 at 7.15.55 PM.jpeg",
+] as const;
+const galleryPreviewPhotos = galleryPreviewFiles.map((fileName) => {
+  const galleryIndex = galleryPhotoFiles.indexOf(fileName);
+  return { ...galleryPhotos[galleryIndex], galleryIndex };
+});
 
 function Motif({ id, className }: { id: string; className?: string }) {
   return (
@@ -178,7 +190,7 @@ function Hero({ onBook }: { onBook: () => void }) {
 
         <div className="hero-art" aria-label="Art materials and painted textures">
           <div className="plate plate-main">
-            <img src={heroArtwork.portrait} alt="Line artwork of two expressive faces with blue eyes and red lips." />
+            <img src={heroArtwork.portrait} alt="Hand-drawn Art Restart logo with a colorful restart arrow." />
           </div>
           <div className="plate plate-detail">
             <img src={heroArtwork.mandala} alt="Abstract watercolor artwork with vivid blue, green, red, and purple washes." />
@@ -200,9 +212,6 @@ function AboutMission() {
       <Motif id="sparkle-four" className="mission-motif mission-motif-a" />
       <Motif id="starburst" className="mission-motif mission-motif-b" />
       <div className="mission-inner">
-        <div className="mission-logo-card">
-          <img src={missionLogoUrl} alt="Hand-drawn Art Restart logo with a colorful restart arrow." />
-        </div>
         <div className="mission-copy">
           <h2>
             Art is for <em>everyone.</em>
@@ -219,7 +228,7 @@ function AboutMission() {
   );
 }
 
-function Services({ onBook }: { onBook: () => void }) {
+function Services() {
   const services = [
     {
       tone: "mint",
@@ -230,7 +239,8 @@ function Services({ onBook }: { onBook: () => void }) {
         </>
       ),
       body: "Tailored sessions and visual journaling spanning art, drama, dance, and music. A non-judgmental space to process complex emotions, reduce everyday anxiety, or simply take a breath.",
-      cta: "View therapy options",
+      cta: "See the Benefits",
+      href: "#benefits",
     },
     {
       tone: "lavender",
@@ -242,6 +252,7 @@ function Services({ onBook }: { onBook: () => void }) {
       ),
       body: "Creative arts therapies integrated into existing care models. Long-term wellness partnerships for nonprofits, schools, employee groups, and staff wellness workshops.",
       cta: "Partner with us",
+      href: contactMailto,
     },
     {
       tone: "yellow",
@@ -252,7 +263,8 @@ function Services({ onBook }: { onBook: () => void }) {
         </>
       ),
       body: "Soon, Art Restart will host pop-ups, workshops, creative journaling, and a full-time studio space dedicated to expressive arts.",
-      cta: "Join the waitlist",
+      cta: "Contact Us",
+      href: contactMailto,
     },
   ];
 
@@ -276,9 +288,9 @@ function Services({ onBook }: { onBook: () => void }) {
             <Motif id={service.icon} className="service-icon" />
             <h3>{service.title}</h3>
             <p>{service.body}</p>
-            <button className="card-link" onClick={onBook}>
+            <a className="card-link" href={service.href}>
               {service.cta} <span aria-hidden="true">→</span>
-            </button>
+            </a>
           </article>
         ))}
       </div>
@@ -457,7 +469,6 @@ function GalleryLightbox({
 function Community() {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [activePhoto, setActivePhoto] = useState(0);
-  const previewPhotos = galleryPhotos.slice(0, 3);
   const openGallery = (index: number) => {
     setActivePhoto(index);
     setGalleryOpen(true);
@@ -489,11 +500,11 @@ function Community() {
 
         <article className="gallery-card">
           <div className="gallery-strip">
-            {previewPhotos.map((photo, index) => (
+            {galleryPreviewPhotos.map((photo, index) => (
               <button
                 className={`gallery-thumb gallery-thumb-${index + 1}`}
                 key={photo.src}
-                onClick={() => openGallery(index)}
+                onClick={() => openGallery(photo.galleryIndex)}
                 aria-label={`Open gallery at photo ${index + 1}`}
               >
                 <img src={photo.src} alt={photo.alt} />
@@ -516,7 +527,7 @@ function Community() {
   );
 }
 
-function FinalFooter({ onBook }: { onBook: () => void }) {
+function FinalFooter() {
   return (
     <footer className="final-footer" id="contact">
       <Motif id="radial-burst" className="footer-motif footer-motif-a" />
@@ -526,9 +537,9 @@ function FinalFooter({ onBook }: { onBook: () => void }) {
           Ready to <em>restart?</em>
         </h2>
         <p>Get in touch today to discuss availability, rates, and how we can create together.</p>
-        <button className="btn btn-yellow" onClick={onBook}>
+        <a className="btn btn-yellow" href={contactMailto}>
           Email Randi <span aria-hidden="true">→</span>
-        </button>
+        </a>
       </div>
       <div className="footer-meta">
         <div>
@@ -541,8 +552,7 @@ function FinalFooter({ onBook }: { onBook: () => void }) {
         </div>
       </div>
       <div className="footer-tiny">
-        © 2026 Art Restart Studio - Registered member, OATA + CATA - All client art appears with consent,
-        anonymised.
+        © 2026 Art Restart Studio
       </div>
     </footer>
   );
@@ -634,12 +644,12 @@ function ArtRestartHome() {
       <main>
         <Hero onBook={onBook} />
         <AboutMission />
-        <Services onBook={onBook} />
+        <Services />
         <Benefits />
         <AboutRandi />
         <Community />
       </main>
-      <FinalFooter onBook={onBook} />
+      <FinalFooter />
       <BookModal open={modal} onClose={() => setModal(false)} />
     </div>
   );
