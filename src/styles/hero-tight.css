@@ -106,6 +106,7 @@
     transform: translate3d(calc(var(--hero-scroll, 0) * -12px), calc(var(--hero-scroll, 0) * -8px), 0)
       rotate(calc(-2.5deg + (var(--hero-scroll, 0) * -2.8deg)));
     width: 42%;
+    z-index: 6;
   }
 
   .plate-detail {

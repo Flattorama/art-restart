@@ -393,7 +393,8 @@ ul {
 }
 
 .plate-main img {
-  object-position: 50% 42%;
+  object-fit: contain;
+  object-position: 50% 50%;
 }
 
 .plate-detail img {
@@ -413,7 +414,7 @@ ul {
   transform: translate3d(calc(var(--hero-scroll, 0) * -10px), calc(var(--hero-scroll, 0) * -8px), 0)
     rotate(calc(-3.5deg + (var(--hero-scroll, 0) * -2.2deg)));
   width: 42%;
-  z-index: 2;
+  z-index: 6;
 }
 
 .plate-detail {
@@ -522,51 +523,16 @@ ul {
 
 .mission-inner {
   align-items: center;
-  display: grid;
-  gap: clamp(30px, 5vw, 72px);
-  grid-template-columns: minmax(210px, 0.45fr) minmax(0, 1fr);
+  display: block;
   margin: 0 auto;
-  max-width: 1080px;
+  max-width: 920px;
   position: relative;
+  text-align: center;
   z-index: 3;
 }
 
-.mission-logo-card {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(252, 249, 240, 0.94)),
-    var(--surface);
-  border: 1.5px solid rgba(44, 44, 44, 0.24);
-  border-radius: 12px;
-  box-shadow: var(--shadow-small);
-  justify-self: center;
-  max-width: 260px;
-  padding: clamp(12px, 2vw, 18px);
-  position: relative;
-  transform: rotate(-3deg);
-  width: min(100%, 260px);
-}
-
-.mission-logo-card::before {
-  background: var(--yellow);
-  border: 1.5px solid rgba(44, 44, 44, 0.28);
-  border-radius: 999px;
-  box-shadow: 1px 2px 0 rgba(44, 44, 44, 0.16);
-  content: "";
-  height: 18px;
-  left: 50%;
-  position: absolute;
-  top: -11px;
-  transform: translateX(-50%) rotate(5deg);
-  width: 56px;
-}
-
-.mission-logo-card img {
-  border-radius: 8px;
-  height: auto;
-  width: 100%;
-}
-
 .mission-copy {
+  margin: 0 auto;
   max-width: 780px;
   text-align: center;
 }
@@ -709,9 +675,11 @@ ul {
   border: 1.5px solid var(--ink);
   border-radius: var(--radius-md);
   color: var(--ink);
+  display: inline-flex;
   font-weight: 800;
   padding: 11px 16px;
   position: relative;
+  text-decoration: none;
   z-index: 2;
 }
 
@@ -1374,7 +1342,6 @@ ul {
   .section-head,
   .service-grid,
   .about-randi-inner,
-  .mission-inner,
   .community-grid,
   .footer-meta {
     grid-template-columns: 1fr;
@@ -1383,12 +1350,6 @@ ul {
   .mission-inner {
     max-width: 780px;
     text-align: center;
-  }
-
-  .mission-logo-card {
-    max-width: 220px;
-    order: -1;
-    width: min(72vw, 220px);
   }
 
   .service-card {
