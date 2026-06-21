@@ -2,6 +2,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 
 import appCss from "../styles.css?url";
 import heroTightCss from "../styles/hero-tight.css?url";
+const shareImage = "https://art-restart.com/gallery/Art%20Restart%20Logo.png";
 
 const ldJson = JSON.stringify({
   "@context": "https://schema.org",
@@ -108,7 +109,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Art Restart — Creative Arts Therapy in Thornhill & the GTA" },
+      { title: "Art Therapy - Creative Art Therapy" },
       {
         name: "description",
         content:
@@ -117,7 +118,7 @@ export const Route = createRootRoute({
       { name: "author", content: "Randi Yaffa, D-TATI" },
       {
         property: "og:title",
-        content: "Art Restart — Creative Arts Therapy in Thornhill & the GTA",
+        content: "Art Therapy - Creative Art Therapy",
       },
       {
         property: "og:description",
@@ -126,12 +127,12 @@ export const Route = createRootRoute({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://art-restart.com" },
-      { property: "og:image", content: "/og-cover.jpg" },
+      { property: "og:image", content: shareImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/og-cover.jpg" },
+      { name: "twitter:image", content: shareImage },
       {
         name: "twitter:title",
-        content: "Art Restart — Creative Arts Therapy in Thornhill & the GTA",
+        content: "Art Therapy - Creative Art Therapy",
       },
       {
         name: "twitter:description",
