@@ -590,20 +590,29 @@ function BookModal({ open, onClose }: { open: boolean; onClose: () => void }) {
             <form
               onSubmit={(event) => {
                 event.preventDefault();
+                const form = event.currentTarget;
+                const formData = new FormData(form);
+                const name = String(formData.get("name") || "").trim();
+                const email = String(formData.get("email") || "").trim();
+                const message = String(formData.get("message") || "").trim();
+                const subject = encodeURIComponent(`Website Form ${name || "Consult Request"}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nWhat brought you here?\n${message}`);
+
+                window.location.href = `${contactMailto}?subject=${subject}&body=${body}`;
                 setConfirmed(true);
               }}
             >
               <label>
                 <span>Name</span>
-                <input placeholder="Your name" required />
+                <input name="name" placeholder="Your name" required />
               </label>
               <label>
                 <span>Email</span>
-                <input type="email" placeholder="you@somewhere.com" required />
+                <input name="email" type="email" placeholder="you@somewhere.com" required />
               </label>
               <label>
                 <span>What brought you here?</span>
-                <textarea placeholder="A sentence or two." />
+                <textarea name="message" placeholder="A sentence or two." />
               </label>
               <button className="submit" type="submit">
                 Send request <span aria-hidden="true">→</span>
